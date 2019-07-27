@@ -1,8 +1,8 @@
 name: bubble
-description: Speech bubble
-version: 0.0.1
+description: A Flutter widget for chat like a speech bubble in Whatsapp and others.
+version: 1.0.0
 author: Victor Dunaev <victor.dunaev@gmail.com>
-homepage: https://github.com/vi-k
+homepage: https://github.com/vi-k/bubble
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
