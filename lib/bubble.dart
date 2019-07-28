@@ -4,19 +4,21 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+
 enum BubbleSource { NO_SOURCE, TOP_LEFT, TOP_RIGHT }
 
+
 class BubbleClipper extends CustomClipper<Path> {
-  BubbleClipper(
-      {@required this.radius,
-      @required this.nipWidth,
-      @required this.nipHeight,
-      @required this.nipRadius,
-      @required this.nipPosition,
-      @required this.nipOffset,
-      @required this.showNip,
-      @required this.padding,
-      @required this.margin})
+  BubbleClipper({
+    @required this.source,
+    @required this.radius,
+    @required this.nipWidth,
+    @required this.nipHeight,
+    @required this.nipRadius,
+    @required this.nipOffset,
+    @required this.showNip,
+    @required this.padding,
+    @required this.margin})
       : super() {
     assert(nipWidth > 0.0);
     assert(nipHeight > 0.0);
@@ -24,7 +26,7 @@ class BubbleClipper extends CustomClipper<Path> {
     assert(nipRadius <= nipWidth / 2.0 && nipRadius <= nipHeight / 2.0);
     assert(radius <= nipHeight);
 
-    if (nipPosition != BubbleSource.NO_SOURCE) {
+    if (source != BubbleSource.NO_SOURCE) {
       var k = nipHeight / nipWidth;
       var a = atan(k);
 
@@ -39,7 +41,7 @@ class BubbleClipper extends CustomClipper<Path> {
   final double nipHeight;
   final double nipWidth;
   final double nipRadius;
-  final BubbleSource nipPosition;
+  final BubbleSource source;
   final double nipOffset;
   final bool showNip;
   final EdgeInsets padding;
@@ -51,13 +53,13 @@ class BubbleClipper extends CustomClipper<Path> {
   double nipPY;
 
   get edgeInsets {
-    return nipPosition == BubbleSource.TOP_LEFT
+    return source == BubbleSource.TOP_LEFT
         ? EdgeInsets.only(
             left: margin.left + nipWidth + padding.left,
             top: margin.top + padding.top,
             right: margin.right + padding.right,
             bottom: margin.bottom + padding.bottom)
-        : nipPosition == BubbleSource.TOP_RIGHT
+        : source == BubbleSource.TOP_RIGHT
             ? EdgeInsets.only(
                 left: margin.left + padding.left,
                 top: margin.top + padding.top,
@@ -75,14 +77,7 @@ class BubbleClipper extends CustomClipper<Path> {
     var cornerRadius = Radius.circular(radius);
     var path = Path();
 
-    if (nipPosition == BubbleSource.NO_SOURCE) {
-      path.addRRect(RRect.fromLTRBR(
-          margin.left,
-          margin.top,
-          size.width - margin.right,
-          size.height - margin.bottom,
-          cornerRadius));
-    } else if (nipPosition == BubbleSource.TOP_LEFT) {
+    if (source == BubbleSource.TOP_LEFT) {
       path.addRRect(RRect.fromLTRBR(
           margin.left + nipWidth,
           margin.top,
@@ -104,7 +99,7 @@ class BubbleClipper extends CustomClipper<Path> {
 
         path = Path.combine(PathOperation.union, path, path2);
       }
-    } else if (nipPosition == BubbleSource.TOP_RIGHT) {
+    } else if (source == BubbleSource.TOP_RIGHT) {
       path.addRRect(RRect.fromLTRBR(
           margin.left,
           margin.top,
@@ -132,6 +127,13 @@ class BubbleClipper extends CustomClipper<Path> {
 
         path = Path.combine(PathOperation.union, path, path2);
       }
+    } else if (source == BubbleSource.NO_SOURCE) {
+      path.addRRect(RRect.fromLTRBR(
+          margin.left,
+          margin.top,
+          size.width - margin.right,
+          size.height - margin.bottom,
+          cornerRadius));
     }
 
     return path;
@@ -141,14 +143,15 @@ class BubbleClipper extends CustomClipper<Path> {
   bool shouldReclip(BubbleClipper oldClipper) => false;
 }
 
+
 class Bubble extends StatelessWidget {
   Bubble({
+    @required source,
     @required this.child,
     radius = 6.0,
     this.nipWidth = 8.0,
     nipHeight = 10.0,
     nipRadius = 1.0,
-    nipPosition = BubbleSource.TOP_LEFT,
     nipOffset = 0.0,
     showNip = true,
     this.margin = const EdgeInsets.only(top: 8.0),
@@ -161,7 +164,7 @@ class Bubble extends StatelessWidget {
             nipWidth: nipWidth,
             nipHeight: nipHeight,
             nipRadius: nipRadius,
-            nipPosition: nipPosition,
+            source: source,
             nipOffset: nipOffset,
             showNip: showNip,
             padding: padding,
