@@ -5,12 +5,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 
-enum BubbleSource { NO_SOURCE, TOP_LEFT, TOP_RIGHT }
+enum BubbleNip { NO, TOP_LEFT, TOP_RIGHT }
 
 
 class BubbleClipper extends CustomClipper<Path> {
   BubbleClipper({
-    @required this.source,
+    @required this.nip,
     @required this.radius,
     @required this.nipWidth,
     @required this.nipHeight,
@@ -29,7 +29,7 @@ class BubbleClipper extends CustomClipper<Path> {
     assert(padding != null);
     assert(margin != null);
 
-    if (source != BubbleSource.NO_SOURCE && nipRadius > 0) {
+    if (nip != BubbleNip.NO && nipRadius > 0) {
       var k = nipHeight / nipWidth;
       var a = atan(k);
 
@@ -44,7 +44,7 @@ class BubbleClipper extends CustomClipper<Path> {
   final double nipHeight;
   final double nipWidth;
   final double nipRadius;
-  final BubbleSource source;
+  final BubbleNip nip;
   final double nipOffset;
   final bool showNip;
   final EdgeInsets padding;
@@ -56,13 +56,13 @@ class BubbleClipper extends CustomClipper<Path> {
   double nipPY;
 
   get edgeInsets {
-    return source == BubbleSource.TOP_LEFT
+    return nip == BubbleNip.TOP_LEFT
         ? EdgeInsets.only(
             left: margin.left + nipWidth + padding.left,
             top: margin.top + padding.top,
             right: margin.right + padding.right,
             bottom: margin.bottom + padding.bottom)
-        : source == BubbleSource.TOP_RIGHT
+        : nip == BubbleNip.TOP_RIGHT
             ? EdgeInsets.only(
                 left: margin.left + padding.left,
                 top: margin.top + padding.top,
@@ -80,7 +80,7 @@ class BubbleClipper extends CustomClipper<Path> {
     var cornerRadius = Radius.circular(radius);
     var path = Path();
 
-    if (source == BubbleSource.TOP_LEFT) {
+    if (nip == BubbleNip.TOP_LEFT) {
       path.addRRect(RRect.fromLTRBR(
           margin.left + nipWidth,
           margin.top,
@@ -124,7 +124,7 @@ class BubbleClipper extends CustomClipper<Path> {
 //
 //        path = Path.combine(PathOperation.union, path, path2);
       }
-    } else if (source == BubbleSource.TOP_RIGHT) {
+    } else if (nip == BubbleNip.TOP_RIGHT) {
       path.addRRect(RRect.fromLTRBR(
           margin.left,
           margin.top,
@@ -176,7 +176,7 @@ class BubbleClipper extends CustomClipper<Path> {
 //        }
 //        path.close();
       }
-    } else if (source == BubbleSource.NO_SOURCE) {
+    } else if (nip == BubbleNip.NO) {
       path.addRRect(RRect.fromLTRBR(
           margin.left,
           margin.top,
@@ -195,7 +195,7 @@ class BubbleClipper extends CustomClipper<Path> {
 
 class Bubble extends StatelessWidget {
   Bubble({
-    @required BubbleSource source,
+    @required BubbleNip nip,
     @required this.child,
     double radius = 6.0,
     this.nipWidth = 8.0,
@@ -213,7 +213,7 @@ class Bubble extends StatelessWidget {
             nipWidth: nipWidth,
             nipHeight: nipHeight,
             nipRadius: nipRadius,
-            source: source,
+            nip: nip,
             nipOffset: nipOffset,
             showNip: showNip,
             padding: padding,
