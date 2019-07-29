@@ -2,11 +2,11 @@
 
 A Flutter widget for chat like a speech bubble in Whatsapp and others.
 
-## Example:
+## Example
 
-[Sources](example)
+[Sources](https://github.com/vi-k/bubble/example).
 
-<img src="screenshots/example.png" width=360>
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/example.png" width=360>
 
 ```dart
 import 'package:flutter/material.dart';
