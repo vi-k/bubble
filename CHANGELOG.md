@@ -1,3 +1,15 @@
+## [1.1.0] 2019-07-30.
+
+* Moved all properties to property 'style'.
+
+## [1.0.5] 2019-07-29.
+
+* Wrapped widget in Container. Added property 'alignment'.
+
+## [1.0.4] 2019-07-29.
+
+* Fix in README.md.
+
 ## [1.0.3] 2019-07-29.
 
 * Changes in example.
