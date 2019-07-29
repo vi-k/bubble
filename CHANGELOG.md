@@ -1,3 +1,7 @@
+## [1.1.1] 2019-07-30.
+
+* Changes in the example: elevation = 1 px.
+
 ## [1.1.0] 2019-07-30.
 
 * Moved all properties to property 'style'.

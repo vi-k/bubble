@@ -25,41 +25,49 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const BubbleStyle BUBBLE_CAPTION = BubbleStyle(
-    color: Color.fromARGB(255, 212, 234, 244),
-    margin: EdgeInsets.only(top: 8),
-    alignment: Alignment.topCenter,
-  );
-  static const BubbleStyle BUBBLE_SOMEBODY = BubbleStyle(
-    nip: BubbleNip.TOP_LEFT,
-    color: Colors.white,
-    margin: EdgeInsets.only(top: 8, right: 48),
-    alignment: Alignment.topLeft,
-  );
-  static const BubbleStyle BUBBLE_SOMEBODY_NEXT = BubbleStyle(
-    nip: BubbleNip.TOP_LEFT,
-    color: Colors.white,
-    margin: EdgeInsets.only(top: 2, right: 48),
-    alignment: Alignment.topLeft,
-  );
-  static const BubbleStyle BUBBLE_ME = BubbleStyle(
-    nip: BubbleNip.TOP_RIGHT,
-    color: Color.fromARGB(255, 225, 255, 199),
-    margin: EdgeInsets.only(top: 8, left: 48),
-    alignment: Alignment.topRight,
-  );
-  static const BubbleStyle BUBBLE_ME_NEXT = BubbleStyle(
-    nip: BubbleNip.TOP_RIGHT,
-    color: Color.fromARGB(255, 225, 255, 199),
-    margin: EdgeInsets.only(top: 2, left: 48),
-    alignment: Alignment.topRight,
-  );
-
   @override
   Widget build(BuildContext context) {
+    double pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    double px = 1 / pixelRatio;
+
+    BubbleStyle styleCaption = BubbleStyle(
+      color: Color.fromARGB(255, 212, 234, 244),
+      elevation: 1 * px,
+      margin: EdgeInsets.only(top: 8),
+      alignment: Alignment.topCenter,
+    );
+    BubbleStyle styleSomebody = BubbleStyle(
+      nip: BubbleNip.TOP_LEFT,
+      color: Colors.white,
+      elevation: 1 * px,
+      margin: EdgeInsets.only(top: 8, right: 48),
+      alignment: Alignment.topLeft,
+    );
+    BubbleStyle styleSomebodyNext = BubbleStyle(
+      nip: BubbleNip.TOP_LEFT,
+      color: Colors.white,
+      elevation: 1 * px,
+      margin: EdgeInsets.only(top: 2, right: 48),
+      alignment: Alignment.topLeft,
+    );
+    BubbleStyle styleMe = BubbleStyle(
+      nip: BubbleNip.TOP_RIGHT,
+      color: Color.fromARGB(255, 225, 255, 199),
+      elevation: 1 * px,
+      margin: EdgeInsets.only(top: 8, left: 48),
+      alignment: Alignment.topRight,
+    );
+    BubbleStyle styleMeNext = BubbleStyle(
+      nip: BubbleNip.TOP_RIGHT,
+      color: Color.fromARGB(255, 225, 255, 199),
+      elevation: 1 * px,
+      margin: EdgeInsets.only(top: 2, left: 48),
+      alignment: Alignment.topRight,
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(MyApp.TITLE),
+        title: Text('${MyApp.TITLE} (pixel ratio: $pixelRatio)'),
       ),
       body: Container(
         color: Colors.yellow.withAlpha(64),
@@ -67,31 +75,31 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.all(8),
           children: [
             Bubble(
-              style: BUBBLE_CAPTION,
+              style: styleCaption,
               child: Text('TODAY', style: TextStyle(fontSize: 10)),
             ),
             Bubble(
-              style: BUBBLE_SOMEBODY,
+              style: styleSomebody,
               child: Text('Hi Jason. Sorry to bother you. I have a queston for you.'),
             ),
             Bubble(
-              style: BUBBLE_ME,
+              style: styleMe,
               child: Text('Whats\'up?'),
             ),
             Bubble(
-              style: BUBBLE_SOMEBODY,
+              style: styleSomebody,
               child: Text('I\'ve been having a problem with my computer.'),
             ),
             Bubble(
-              style: BUBBLE_SOMEBODY_NEXT,
+              style: styleSomebodyNext,
               child: Text('Can you help me?'),
             ),
             Bubble(
-              style: BUBBLE_ME,
+              style: styleMe,
               child: Text('Ok'),
             ),
             Bubble(
-              style: BUBBLE_ME_NEXT,
+              style: styleMeNext,
               child: Text('What\'s the problem?'),
             ),
           ],
