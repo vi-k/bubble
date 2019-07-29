@@ -207,7 +207,7 @@ class Bubble extends StatelessWidget {
     this.elevation = 1.0,
     this.shadowColor = Colors.black,
     this.padding = const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
-    this.margin = const EdgeInsets.only(top: 8.0),
+    this.margin = EdgeInsets.zero,
   }) : bubbleClipper = BubbleClipper(
             radius: radius,
             nipWidth: nipWidth,

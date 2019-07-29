@@ -28,6 +28,10 @@ class _MyHomePageState extends State<MyHomePage> {
   static const Color COLOR_LEFT = Colors.white;
   static const Color COLOR_RIGHT = Color.fromARGB(255, 225, 255, 199);
   static const Color COLOR_CAPTION = Color.fromARGB(255, 212, 234, 244);
+  static const EdgeInsets MARGIN_LEFT = EdgeInsets.only(top: 8, right: 48);
+  static const EdgeInsets MARGIN_LEFT_NEXT = EdgeInsets.only(top: 2, right: 48);
+  static const EdgeInsets MARGIN_RIGHT = EdgeInsets.only(top: 8, left: 48);
+  static const EdgeInsets MARGIN_RIGHT_NEXT = EdgeInsets.only(top: 2, left: 48);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(MyApp.TITLE),
       ),
       body: Container(
-        width: double.infinity,
         color: Colors.yellow.withAlpha(64),
         child: ListView(
           padding: EdgeInsets.all(8),
@@ -55,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 nip: BubbleNip.TOP_LEFT,
                 color: COLOR_LEFT,
                 child: Text('Hi Jason. Sorry to bother you. I have a queston for you.'),
+                margin: MARGIN_LEFT,
               ),
             ),
             Container(
@@ -62,7 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Bubble(
                 nip: BubbleNip.TOP_RIGHT,
                 color: COLOR_RIGHT,
-                child: Text('OK, whats\'up?'),
+                child: Text('Whats\'up?'),
+                margin: MARGIN_RIGHT,
               ),
             ),
             Container(
@@ -71,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 nip: BubbleNip.TOP_LEFT,
                 color: COLOR_LEFT,
                 child: Text('I\'ve been having a problem with my computer.'),
+                margin: MARGIN_LEFT,
               ),
             ),
             Container(
@@ -78,9 +84,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Bubble(
                 nip: BubbleNip.TOP_LEFT,
                 color: COLOR_LEFT,
-                margin: EdgeInsets.only(top: 2),
                 showNip: false,
                 child: Text('Can you help me?'),
+                margin: MARGIN_LEFT_NEXT,
               ),
             ),
             Container(
@@ -88,7 +94,18 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Bubble(
                 nip: BubbleNip.TOP_RIGHT,
                 color: COLOR_RIGHT,
+                child: Text('Ok'),
+                margin: MARGIN_RIGHT,
+              ),
+            ),
+            Container(
+              alignment: Alignment.topRight,
+              child: Bubble(
+                nip: BubbleNip.TOP_RIGHT,
+                showNip: false,
+                color: COLOR_RIGHT,
                 child: Text('What\'s the problem?'),
+                margin: MARGIN_RIGHT_NEXT,
               ),
             ),
           ],
