@@ -22,11 +22,14 @@ class BubbleClipper extends CustomClipper<Path> {
       : super() {
     assert(nipWidth > 0.0);
     assert(nipHeight > 0.0);
-    assert(nipOffset >= 0.0);
+    assert(nipRadius >= 0.0);
     assert(nipRadius <= nipWidth / 2.0 && nipRadius <= nipHeight / 2.0);
-    assert(radius <= nipHeight);
+    assert(nipOffset >= 0.0);
+    assert(radius <= nipHeight + nipOffset);
+    assert(padding != null);
+    assert(margin != null);
 
-    if (source != BubbleSource.NO_SOURCE) {
+    if (source != BubbleSource.NO_SOURCE && nipRadius > 0) {
       var k = nipHeight / nipWidth;
       var a = atan(k);
 
@@ -86,18 +89,40 @@ class BubbleClipper extends CustomClipper<Path> {
           cornerRadius));
 
       if (showNip) {
-        var path2 = Path();
-        path2.moveTo(margin.left + nipWidth + radius, margin.top + nipOffset);
-        path2.lineTo(margin.left + nipWidth + radius,
+        // mumbo-jumbo #1 / Танцы с бубнами #1.
+        // Если делать через combine, как в случае с TOP_RIGHT, то при nipRadius = 0 и близких к нему bubble рисуется
+        // нормально, зато тень игнорирует весь nip, как будто его нет, а есть только RRect
+        path.moveTo(margin.left + nipWidth + radius, margin.top + nipOffset);
+        path.lineTo(margin.left + nipWidth + radius,
             margin.top + nipOffset + nipHeight);
-        path2.lineTo(
+        path.lineTo(
             margin.left + nipWidth, margin.top + nipOffset + nipHeight);
-        path2.lineTo(margin.left + nipPX, margin.top + nipOffset + nipPY);
-        path2.arcToPoint(Offset(margin.left + nipCX, margin.top + nipOffset),
-            radius: Radius.circular(nipRadius));
-        path2.close();
+        if (nipRadius == 0) {
+          path.lineTo(margin.left, margin.top + nipOffset );
+        } else {
+          path.lineTo(margin.left + nipPX, margin.top + nipOffset + nipPY);
+          path.arcToPoint(Offset(margin.left + nipCX, margin.top + nipOffset),
+              radius: Radius.circular(nipRadius));
+        }
+        path.close();
 
-        path = Path.combine(PathOperation.union, path, path2);
+        // Invalid code for nipRadius ~~ 0
+//        var path2 = Path();
+//        path2.moveTo(margin.left + nipWidth + radius, margin.top + nipOffset);
+//        path2.lineTo(margin.left + nipWidth + radius,
+//            margin.top + nipOffset + nipHeight);
+//        path2.lineTo(
+//            margin.left + nipWidth, margin.top + nipOffset + nipHeight);
+//        if (nipRadius == 0) {
+//          path2.lineTo(margin.left, margin.top + nipOffset );
+//        } else {
+//          path2.lineTo(margin.left + nipPX, margin.top + nipOffset + nipPY);
+//          path2.arcToPoint(Offset(margin.left + nipCX, margin.top + nipOffset),
+//              radius: Radius.circular(nipRadius));
+//        }
+//        path2.close();
+//
+//        path = Path.combine(PathOperation.union, path, path2);
       }
     } else if (source == BubbleSource.TOP_RIGHT) {
       path.addRRect(RRect.fromLTRBR(
@@ -107,25 +132,49 @@ class BubbleClipper extends CustomClipper<Path> {
           size.height - margin.bottom,
           cornerRadius));
 
-      // Если делать всё в одном Path, то возникают странные глюки: в одном случае происходит объединение,
-      // в другом - xor
       if (showNip) {
+        // Mumbo-jumbo #2 / Танцы с бубнами #2.
+        // Если делать всё в одном Path, то возникают странные глюки: если nip справа, то происходит операция xor,
+        // а не union. Поэтому использую новый path, а потом объединяю
         var path2 = Path();
         path2.moveTo(size.width - margin.right - nipWidth - radius,
             margin.top + nipOffset);
-        path.lineTo(size.width - margin.right - nipWidth - radius,
+        path2.lineTo(size.width - margin.right - nipWidth - radius,
             margin.top + nipOffset + nipHeight);
         path2.lineTo(size.width - margin.right - nipWidth,
             margin.top + nipOffset + nipHeight);
-        path2.lineTo(
-            size.width - margin.right - nipPX, margin.top + nipOffset + nipPY);
-        path2.arcToPoint(
-            Offset(size.width - margin.right - nipCX, margin.top + nipOffset),
-            radius: Radius.circular(nipRadius),
-            clockwise: false);
+        if (nipRadius == 0) {
+          path2.lineTo(size.width - margin.right, margin.top + nipOffset);
+        } else {
+          path2.lineTo(
+              size.width - margin.right - nipPX, margin.top + nipOffset + nipPY);
+          path2.arcToPoint(
+              Offset(size.width - margin.right - nipCX, margin.top + nipOffset),
+              radius: Radius.circular(nipRadius),
+              clockwise: false);
+        }
         path2.close();
 
         path = Path.combine(PathOperation.union, path, path2);
+
+        // Invalid code. "Xor" instead "combine"
+//        path.moveTo(size.width - margin.right - nipWidth - radius,
+//            margin.top + nipOffset);
+//        path.lineTo(size.width - margin.right - nipWidth - radius,
+//            margin.top + nipOffset + nipHeight);
+//        path.lineTo(size.width - margin.right - nipWidth,
+//            margin.top + nipOffset + nipHeight);
+//        if (nipRadius == 0) {
+//          path.lineTo(size.width - margin.right, margin.top + nipOffset);
+//        } else {
+//          path.lineTo(
+//              size.width - margin.right - nipPX, margin.top + nipOffset + nipPY);
+//          path.arcToPoint(
+//              Offset(size.width - margin.right - nipCX, margin.top + nipOffset),
+//              radius: Radius.circular(nipRadius),
+//              clockwise: false);
+//        }
+//        path.close();
       }
     } else if (source == BubbleSource.NO_SOURCE) {
       path.addRRect(RRect.fromLTRBR(
@@ -146,19 +195,19 @@ class BubbleClipper extends CustomClipper<Path> {
 
 class Bubble extends StatelessWidget {
   Bubble({
-    @required source,
+    @required BubbleSource source,
     @required this.child,
-    radius = 6.0,
+    double radius = 6.0,
     this.nipWidth = 8.0,
-    nipHeight = 10.0,
-    nipRadius = 1.0,
-    nipOffset = 0.0,
-    showNip = true,
-    this.margin = const EdgeInsets.only(top: 8.0),
+    double nipHeight = 10.0,
+    double nipRadius = 1.0,
+    double nipOffset = 0.0,
+    bool showNip = true,
     this.color = Colors.white,
     this.elevation = 1.0,
     this.shadowColor = Colors.black,
-    this.padding = const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+    this.padding = const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
+    this.margin = const EdgeInsets.only(top: 8.0),
   }) : bubbleClipper = BubbleClipper(
             radius: radius,
             nipWidth: nipWidth,
