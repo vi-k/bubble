@@ -1,3 +1,7 @@
+## [0.1.4] 2019-07-29.
+
+* Added an example.
+
 ## [0.1.3] 2019-07-29.
 
 * Problem #2 with nipRadius.
