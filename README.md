@@ -4,7 +4,7 @@ A Flutter widget for chat like a speech bubble in Whatsapp and others.
 
 ## Example
 
-[Sources](https://github.com/vi-k/bubble/example).
+[Sources](https://github.com/vi-k/bubble/blob/master/example).
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/example.png" width=360>
 
