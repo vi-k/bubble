@@ -404,6 +404,8 @@ It's ok :)
 
 ### Property: elevation
 
+A thick shadow.
+
 ```dart
 for (var i = 1; i <= 8; i *= 2)
   Column(
@@ -433,11 +435,12 @@ for (var i = 1; i <= 8; i *= 2)
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_140.png?raw=true)
 
+A thin shadow.
+
 ```dart
 double px = 1 / MediaQuery.of(context).devicePixelRatio;
 
 ...
-
 Bubble(
   style: BubbleStyle(
     alignment: Alignment.topRight,
