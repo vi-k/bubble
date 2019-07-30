@@ -18,21 +18,25 @@ Bubble(
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_10.png?raw=true" width="360">
 
+### Properties: nip, margin
+
 ```dart
 Bubble(
-  *style: BubbleStyle(*
+  style: BubbleStyle(
     nip: BubbleNip.TOP_RIGHT,
   ),
   child: Text('Hello, world!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     nip: BubbleNip.TOP_LEFT,
   ),
   child: Text('Hello, programmer!'),
 ),
 ```
+
+### Property: alignment
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_20.png?raw=true" width="360">
 
@@ -44,9 +48,9 @@ Bubble(
   ),
   child: Text('Hello, world!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     alignment: Alignment.topLeft,
     nip: BubbleNip.TOP_LEFT,
   ),
@@ -56,6 +60,8 @@ Bubble(
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_30.png?raw=true" width="360">
 
+### Property: color
+
 ```dart
 Bubble(
   style: BubbleStyle(
@@ -65,9 +71,9 @@ Bubble(
   ),
   child: Text('Hello, world!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     alignment: Alignment.topLeft,
     nip: BubbleNip.TOP_LEFT,
   ),
@@ -77,6 +83,8 @@ Bubble(
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_40.png?raw=true" width="360">
 
+### Property: radius
+
 ```dart
 Bubble(
   style: BubbleStyle(
@@ -87,9 +95,9 @@ Bubble(
   ),
   child: Text('Hello, world!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     alignment: Alignment.topRight,
     nip: BubbleNip.TOP_RIGHT,
     radius: 10,
@@ -97,18 +105,18 @@ Bubble(
   ),
   child: Text('Hello, world!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     alignment: Alignment.topLeft,
     nip: BubbleNip.TOP_LEFT,
     radius: 0,
   ),
   child: Text('Hello, programmer!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     alignment: Alignment.topLeft,
     nip: BubbleNip.TOP_LEFT,
     radius: 10,
@@ -118,6 +126,8 @@ Bubble(
 ```
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_50.png?raw=true" width="360">
+
+### Properties: nipWidth, nipHeight
 
 ```dart
 Bubble(
@@ -130,9 +140,9 @@ Bubble(
   ),
   child: Text('Hello, world!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     alignment: Alignment.topLeft,
     nip: BubbleNip.TOP_LEFT,
     nipWidth: 8,
@@ -155,9 +165,9 @@ Bubble(
   ),
   child: Text('Hello, world!'),
 ),
-Container(height: 10),
 Bubble(
   style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
     alignment: Alignment.topLeft,
     nip: BubbleNip.TOP_LEFT,
     nipWidth: 30,
@@ -169,29 +179,31 @@ Bubble(
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_70.png?raw=true" width="360">
 
+### Property: nipRadius
+
 ```dart
 for (var i = 0; i <= 6; i++)
   Bubble(
     style: BubbleStyle(
+      margin: EdgeInsets.only(top: 4),
       alignment: Alignment.topRight,
       nip: BubbleNip.TOP_RIGHT,
       nipWidth: 30,
       nipHeight: 12,
       nipRadius: i.toDouble(),
       color: Color.fromARGB(255, 225, 255, 199),
-      margin: EdgeInsets.only(top: 4),
     ),
     child: Text('Hello, world!'),
   ),
 for (var i = 0; i <= 6; i++)
   Bubble(
     style: BubbleStyle(
+      margin: EdgeInsets.only(top: 4),
       alignment: Alignment.topLeft,
       nip: BubbleNip.TOP_LEFT,
       nipWidth: 30,
       nipHeight: 12,
       nipRadius: i.toDouble(),
-      margin: EdgeInsets.only(top: 4),
     ),
     child: Text('Hello, programmer!'),
   ),
@@ -199,10 +211,13 @@ for (var i = 0; i <= 6; i++)
 
 <img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_80.png?raw=true" width="360">
 
+### Property: nipOffset
+
 ```dart
 for (var i = 0; i <= 6; i++)
   Bubble(
     style: BubbleStyle(
+      margin: EdgeInsets.only(top: 4),
       alignment: Alignment.topRight,
       nip: BubbleNip.TOP_RIGHT,
       nipWidth: 30,
@@ -210,20 +225,19 @@ for (var i = 0; i <= 6; i++)
       nipRadius: i.toDouble(),
       nipOffset: 8,
       color: Color.fromARGB(255, 225, 255, 199),
-      margin: EdgeInsets.only(top: 4),
     ),
     child: Text('Hello, world!'),
   ),
 for (var i = 0; i <= 6; i++)
   Bubble(
     style: BubbleStyle(
+      margin: EdgeInsets.only(top: 4),
       alignment: Alignment.topLeft,
       nip: BubbleNip.TOP_LEFT,
       nipWidth: 30,
       nipHeight: 12,
       nipRadius: i.toDouble(),
       nipOffset: 8,
-      margin: EdgeInsets.only(top: 4),
     ),
     child: Text('Hello, programmer!'),
   ),
@@ -235,21 +249,21 @@ for (var i = 0; i <= 6; i++)
 for (var i = 0; i <= 12; i += 3)
   Bubble(
     style: BubbleStyle(
+      margin: EdgeInsets.only(top: 4),
       alignment: Alignment.topRight,
       nip: BubbleNip.TOP_RIGHT,
       nipOffset: i.toDouble(),
       color: Color.fromARGB(255, 225, 255, 199),
-      margin: EdgeInsets.only(top: 4),
     ),
     child: Text('Hello, world!'),
   ),
 for (var i = 0; i <= 12; i += 3)
   Bubble(
     style: BubbleStyle(
+      margin: EdgeInsets.only(top: 4),
       alignment: Alignment.topLeft,
       nip: BubbleNip.TOP_LEFT,
       nipOffset: i.toDouble(),
-      margin: EdgeInsets.only(top: 4),
     ),
     child: Text('Hello, programmer!'),
   ),
