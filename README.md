@@ -38,7 +38,7 @@ Bubble(
 
 ### Property: alignment
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_20.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_20.png?raw=true)
 
 ```dart
 Bubble(
@@ -58,7 +58,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_30.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_30.png?raw=true)
 
 ### Property: color
 
@@ -81,7 +81,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_40.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_40.png?raw=true)
 
 ### Property: radius
 
@@ -125,7 +125,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_50.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_50.png?raw=true)
 
 ### Properties: nipWidth, nipHeight
 
@@ -152,7 +152,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_60.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_60.png?raw=true)
 
 ```dart
 Bubble(
@@ -177,7 +177,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_70.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_70.png?raw=true)
 
 ### Property: nipRadius
 
@@ -209,7 +209,7 @@ for (var i = 0; i <= 6; i++)
   ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_80.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_80.png?raw=true)
 
 ### Property: nipOffset
 
@@ -243,7 +243,7 @@ for (var i = 0; i <= 6; i++)
   ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_90.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_90.png?raw=true)
 
 ```dart
 for (var i = 0; i <= 12; i += 3)
@@ -269,4 +269,4 @@ for (var i = 0; i <= 12; i += 3)
   ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_100.png?raw=true" width="360">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_100.png?raw=true)
