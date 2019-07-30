@@ -181,7 +181,7 @@ class BubbleClipper extends CustomClipper<Path> {
 
 
 class Bubble extends StatelessWidget {
-  Bubble({this.style, this.child})
+  Bubble({this.style = const BubbleStyle(), this.child})
       : bubbleClipper = BubbleClipper(style);
 
   final BubbleClipper bubbleClipper;

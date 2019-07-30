@@ -72,40 +72,64 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('${MyApp.TITLE} (pixel ratio: $pixelRatio)'),
       ),
       body: Container(
+        width: double.infinity,
         color: Colors.yellow.withAlpha(64),
-        child: ListView(
-          padding: EdgeInsets.all(8),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
           children: [
+            Divider(height: 40, color: Colors.black),
             Bubble(
-              style: styleCaption,
-              child: Text('TODAY', style: TextStyle(fontSize: 10)),
+              style: BubbleStyle(
+                alignment: Alignment.topRight,
+                nip: BubbleNip.TOP_RIGHT,
+                color: Color.fromARGB(255, 225, 255, 199),
+              ),
+              child: Text('Hello, world!'),
             ),
+            Container(height: 10),
             Bubble(
-              style: styleSomebody,
-              child: Text('Hi Jason. Sorry to bother you. I have a queston for you.'),
+              style: BubbleStyle(
+                alignment: Alignment.topLeft,
+                nip: BubbleNip.TOP_LEFT,
+              ),
+              child: Text('Hello, programmer!'),
             ),
-            Bubble(
-              style: styleMe,
-              child: Text('Whats\'up?'),
-            ),
-            Bubble(
-              style: styleSomebody,
-              child: Text('I\'ve been having a problem with my computer.'),
-            ),
-            Bubble(
-              style: styleSomebodyNext,
-              child: Text('Can you help me?'),
-            ),
-            Bubble(
-              style: styleMe,
-              child: Text('Ok'),
-            ),
-            Bubble(
-              style: styleMeNext,
-              child: Text('What\'s the problem?'),
-            ),
+            Divider(height: 40, color: Colors.black),
           ],
         ),
+//        child: ListView(
+//          padding: EdgeInsets.all(8),
+//          children: [
+//            Bubble(
+//              style: styleCaption,
+//              child: Text('TODAY', style: TextStyle(fontSize: 10)),
+//            ),
+//            Bubble(
+//              style: styleSomebody,
+//              child: Text('Hi Jason. Sorry to bother you. I have a queston for you.'),
+//            ),
+//            Bubble(
+//              style: styleMe,
+//              child: Text('Whats\'up?'),
+//            ),
+//            Bubble(
+//              style: styleSomebody,
+//              child: Text('I\'ve been having a problem with my computer.'),
+//            ),
+//            Bubble(
+//              style: styleSomebodyNext,
+//              child: Text('Can you help me?'),
+//            ),
+//            Bubble(
+//              style: styleMe,
+//              child: Text('Ok'),
+//            ),
+//            Bubble(
+//              style: styleMeNext,
+//              child: Text('What\'s the problem?'),
+//            ),
+//          ],
+//        ),
       ),
     );
   }
