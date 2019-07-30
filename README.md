@@ -273,6 +273,8 @@ for (var i = 0; i <= 12; i += 3)
 
 ### Property: showNip
 
+Add second bubble to everyone.
+
 ```dart
 Bubble(
   style: BubbleStyle(
@@ -313,6 +315,8 @@ Badly :((
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_110.png?raw=true)
 
+Remove nips.
+
 ```dart
 Bubble(
   style: BubbleStyle(
@@ -352,6 +356,8 @@ Bubble(
 Badly too :((
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_120.png?raw=true)
+
+Hide nips.
 
 ```dart
 Bubble(
