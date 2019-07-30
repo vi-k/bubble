@@ -18,7 +18,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_10.png?raw=true)
 
-### Properties: nip, margin
+### Property: nip
 
 ```dart
 Bubble(
@@ -519,3 +519,121 @@ Bubble(
 ```
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_150.png?raw=true)
+
+### Property: shadowCOlor
+
+```dart
+Bubble(
+  style: BubbleStyle(
+    alignment: Alignment.topRight,
+    nip: BubbleNip.TOP_RIGHT,
+    color: Color.fromARGB(255, 225, 255, 199),
+    elevation: 2,
+    shadowColor: Colors.red,
+  ),
+  child: Text('Hello, world!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topRight,
+    nip: BubbleNip.TOP_RIGHT,
+    color: Color.fromARGB(255, 225, 255, 199),
+    elevation: 2,
+    shadowColor: Colors.green,
+  ),
+  child: Text('Hello, world!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topRight,
+    nip: BubbleNip.TOP_RIGHT,
+    color: Color.fromARGB(255, 225, 255, 199),
+    elevation: 2,
+    shadowColor: Colors.blue,
+  ),
+  child: Text('Hello, world!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topLeft,
+    nip: BubbleNip.TOP_LEFT,
+    elevation: 2,
+    shadowColor: Colors.red,
+  ),
+  child: Text('Hello, programmer!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topLeft,
+    nip: BubbleNip.TOP_LEFT,
+    elevation: 2,
+    shadowColor: Colors.green,
+  ),
+  child: Text('Hello, programmer!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topLeft,
+    nip: BubbleNip.TOP_LEFT,
+    elevation: 2,
+    shadowColor: Colors.blue,
+  ),
+  child: Text('Hello, programmer!'),
+),
+```
+
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_160.png?raw=true)
+
+### Property: margin
+
+```dart
+Bubble(
+  style: BubbleStyle(
+    alignment: Alignment.topRight,
+    nip: BubbleNip.TOP_RIGHT,
+    color: Color.fromARGB(255, 225, 255, 199),
+  ),
+  child: Text('Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'
+    'Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topLeft,
+    nip: BubbleNip.TOP_LEFT,
+  ),
+  child: Text('Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer! '
+    'Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer!'),
+),
+```
+
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_170.png?raw=true)
+
+```dart
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(left: 50),
+    alignment: Alignment.topRight,
+    nip: BubbleNip.TOP_RIGHT,
+    color: Color.fromARGB(255, 225, 255, 199),
+  ),
+  child: Text('Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'
+    'Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10, right: 50),
+    alignment: Alignment.topLeft,
+    nip: BubbleNip.TOP_LEFT,
+  ),
+  child: Text('Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer! '
+    'Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer!'),
+),
+```
+
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_180.png?raw=true)
