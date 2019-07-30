@@ -45,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     BubbleStyle styleSomebodyNext = BubbleStyle(
       nip: BubbleNip.TOP_LEFT,
+      showNip: false,
       color: Colors.white,
       elevation: 1 * px,
       margin: EdgeInsets.only(top: 2, right: 48),
@@ -59,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     BubbleStyle styleMeNext = BubbleStyle(
       nip: BubbleNip.TOP_RIGHT,
+      showNip: false,
       color: Color.fromARGB(255, 225, 255, 199),
       elevation: 1 * px,
       margin: EdgeInsets.only(top: 2, left: 48),

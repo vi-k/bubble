@@ -1,3 +1,7 @@
+## [1.1.2] 2019-07-30.
+
+* Fix the example and screenshot.
+
 ## [1.1.1] 2019-07-30.
 
 * Changes in the example: elevation = 1 px.
