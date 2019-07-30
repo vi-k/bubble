@@ -638,6 +638,8 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_180.png?raw=true)
 
+### Property: padding
+
 ```dart
 Bubble(
   style: BubbleStyle(
