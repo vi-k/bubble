@@ -1,6 +1,13 @@
-## [1.1.2] 2019-07-30.
+## [1.1.4] 2019-07-30.
 
 * Changes in README.md.
+
+## [1.1.3] 2019-07-30.
+
+* Changes in README.md.
+
+## [1.1.2] 2019-07-30.
+
 * Fix the example and screenshot.
 
 ## [1.1.1] 2019-07-30.
