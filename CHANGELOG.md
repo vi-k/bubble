@@ -1,6 +1,7 @@
 ## [1.1.6] 2019-07-31.
 
 * Changes in README.md.
+* Added a scheme of nip to README.md.
 
 ## [1.1.5] 2019-07-30.
 
