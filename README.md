@@ -311,11 +311,11 @@ Bubble(
 ),
 ```
 
-Badly :((
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_110.png?raw=true)
 
-Remove nips.
+Badly :((
+Remove nips!
 
 ```dart
 Bubble(
@@ -353,11 +353,10 @@ Bubble(
 ),
 ```
 
-Badly too :((
-
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_120.png?raw=true)
 
-Hide nips.
+Badly too :((
+Hide nips!
 
 ```dart
 Bubble(
@@ -397,6 +396,6 @@ Bubble(
 ),
 ```
 
-Ok! :)
+It's good :)
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_130.png?raw=true)
