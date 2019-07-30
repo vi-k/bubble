@@ -16,7 +16,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_10.png?raw=true">
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_10.png?raw=true)
 
 ### Properties: nip, margin
 
