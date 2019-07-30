@@ -1,3 +1,7 @@
+## [1.1.5] 2019-07-30.
+
+* Changes in README.md.
+
 ## [1.1.4] 2019-07-30.
 
 * Changes in README.md.
