@@ -315,6 +315,7 @@ Bubble(
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_110.png?raw=true)
 
 Badly :((
+
 Remove nips!
 
 ```dart
@@ -356,6 +357,7 @@ Bubble(
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_120.png?raw=true)
 
 Badly too :((
+
 Hide nips!
 
 ```dart
