@@ -637,3 +637,45 @@ Bubble(
 ```
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_180.png?raw=true)
+
+```dart
+Bubble(
+  style: BubbleStyle(
+    alignment: Alignment.topRight,
+    nip: BubbleNip.TOP_RIGHT,
+    color: Color.fromARGB(255, 225, 255, 199),
+    padding: EdgeInsets.all(2),
+  ),
+  child: Text('Hello, world!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topLeft,
+    nip: BubbleNip.TOP_LEFT,
+    padding: EdgeInsets.all(2),
+  ),
+  child: Text('Hello, programmer!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topRight,
+    nip: BubbleNip.TOP_RIGHT,
+    color: Color.fromARGB(255, 225, 255, 199),
+    padding: EdgeInsets.all(20),
+  ),
+  child: Text('Hello, world!'),
+),
+Bubble(
+  style: BubbleStyle(
+    margin: EdgeInsets.only(top: 10),
+    alignment: Alignment.topLeft,
+    nip: BubbleNip.TOP_LEFT,
+    padding: EdgeInsets.all(20),
+  ),
+  child: Text('Hello, programmer!'),
+),
+```
+
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_190.png?raw=true)
