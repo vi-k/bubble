@@ -396,6 +396,6 @@ Bubble(
 ),
 ```
 
-It's good :)
-
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_130.png?raw=true)
+
+It's good :)
