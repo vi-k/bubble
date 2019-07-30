@@ -1,5 +1,6 @@
 ## [1.1.2] 2019-07-30.
 
+* Changes in README.md.
 * Fix the example and screenshot.
 
 ## [1.1.1] 2019-07-30.
