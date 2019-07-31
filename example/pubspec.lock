@@ -21,7 +21,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.1.2"
+    version: "1.1.6"
   charcode:
     dependency: transitive
     description:
