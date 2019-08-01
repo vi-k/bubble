@@ -1,5 +1,5 @@
 # Bubble
-[![GitHub release](https://img.shields.io/github/release/vi-k/bubble)](https://github.com/vi-k/bubble)
+[![GitHub last commit](https://img.shields.io/github/last-commit/vi-k/bubble?color=red)](https://github.com/vi-k/bubble)
 [![Pub](https://img.shields.io/pub/v/bubble)](https://pub.dev/packages/bubble)
 ![GitHub stars](https://img.shields.io/github/stars/vi-k/bubble)
 ![GitHub](https://img.shields.io/github/license/vi-k/bubble)
