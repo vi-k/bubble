@@ -1,4 +1,4 @@
-# Bubble
+# Bubble ![GitHub](https://img.shields.io/github/license/vi-k/bubble)
 
 A Flutter widget for chat like a speech bubble in Whatsapp and others.
 
