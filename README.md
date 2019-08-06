@@ -1,7 +1,7 @@
 # Bubble
-![Pub](https://img.shields.io/pub/v/bubble)
-![GitHub stars](https://img.shields.io/github/stars/vi-k/bubble)
-![GitHub](https://img.shields.io/github/license/vi-k/bubble)
+[![Pub](https://img.shields.io/pub/v/bubble)](https://pub.dev/packages/bubble)
+[![GitHub last commit](https://img.shields.io/github/last-commit/vi-k/bubble?color=red)](https://github.com/vi-k/bubble)
+[![GitHub stars](https://img.shields.io/github/stars/vi-k/bubble?style=social)](https://github.com/vi-k/bubble)
 
 A Flutter widget for chat like a speech bubble in Whatsapp and others.
 
