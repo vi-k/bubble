@@ -1,4 +1,5 @@
 child: ListView(
+  padding: EdgeInsets.all(8.0),
   children: [
     Divider(height: 40, color: Colors.black),
     Bubble(

@@ -1,3 +1,9 @@
+## 1.1.8 (2019-08-06)
+
+* Added `stick` property.
+* Changed `NO`, `TOP_LEFT` and `TOP_RIGHT` to `no`, `topLeft`, `topRight`. 
+* Refactoring.
+
 ## 1.1.7 (2019-08-05)
 
 * Added additional properties similar to properties in `style`. They are priority.
