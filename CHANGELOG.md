@@ -1,4 +1,4 @@
-## 1.1.8 (2019-08-06)
+## 1.1.8 (2019-08-07)
 
 * Added `stick` property.
 * Changed `NO`, `TOP_LEFT` and `TOP_RIGHT` to `no`, `leftTop`, `rightTop` in BubbleNip. 
