@@ -31,17 +31,17 @@ class _MyHomePageState extends State<MyHomePage> {
     double px = 1 / pixelRatio;
 
     BubbleStyle styleSomebody = BubbleStyle(
-      nip: BubbleNip.TOP_LEFT,
+      nip: BubbleNip.topLeft,
       color: Colors.white,
       elevation: 1 * px,
-      margin: BubbleEdges.only(top: 8, right: 50),
+      margin: BubbleEdges.only(top: 8.0, right: 50.0),
       alignment: Alignment.topLeft,
     );
     BubbleStyle styleMe = BubbleStyle(
-      nip: BubbleNip.TOP_RIGHT,
+      nip: BubbleNip.topRight,
       color: Color.fromARGB(255, 225, 255, 199),
       elevation: 1 * px,
-      margin: BubbleEdges.only(top: 8, left: 50),
+      margin: BubbleEdges.only(top: 8.0, left: 50.0),
       alignment: Alignment.topRight,
     );
 
@@ -52,12 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         color: Colors.yellow.withAlpha(64),
         child: ListView(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(8.0),
           children: [
             Bubble(
               color: Color.fromARGB(255, 212, 234, 244),
               elevation: 1 * px,
-              margin: BubbleEdges.only(top: 8),
+              margin: BubbleEdges.only(top: 8.0),
               child: Text('TODAY', style: TextStyle(fontSize: 10)),
             ),
             Bubble(
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Bubble(
               style: styleSomebody,
-              margin: BubbleEdges.only(top: 2),
+              margin: BubbleEdges.only(top: 2.0),
               showNip: false,
               child: Text('Can you help me?'),
             ),
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Bubble(
               style: styleMe,
               showNip: false,
-              margin: BubbleEdges.only(top: 2),
+              margin: BubbleEdges.only(top: 2.0),
               child: Text('What\'s the problem?'),
             ),
           ],
