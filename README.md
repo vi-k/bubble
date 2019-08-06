@@ -25,16 +25,12 @@ Bubble(
 
 ```dart
 Bubble(
-  style: BubbleStyle(
-    nip: BubbleNip.TOP_RIGHT,
-  ),
+  nip: BubbleNip.TOP_RIGHT,
   child: Text('Hello, world!'),
 ),
 Bubble(
-  style: BubbleStyle(
-    margin: EdgeInsets.only(top: 10),
-    nip: BubbleNip.TOP_LEFT,
-  ),
+  margin: EdgeInsets.only(top: 10),
+  nip: BubbleNip.TOP_LEFT,
   child: Text('Hello, programmer!'),
 ),
 ```

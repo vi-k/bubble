@@ -4,24 +4,60 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+enum BubbleNip { NO, TOP_LEFT, TOP_RIGHT }
 
-enum BubbleNip { TOP_LEFT, TOP_RIGHT }
+/// Class BubbleEdges is an analog of EdgeInsets, but default values are null.
+class BubbleEdges {
+  const BubbleEdges.fromLTRB(this.left, this.top, this.right, this.bottom);
 
+  const BubbleEdges.all(double value)
+      : left = value,
+        top = value,
+        right = value,
+        bottom = value;
+
+  const BubbleEdges.only({
+    this.left, // = null
+    this.top, // = null
+    this.right, // = null
+    this.bottom, // = null
+  });
+
+  const BubbleEdges.symmetric({
+    double vertical, // = null
+    double horizontal, // = null
+  })  : left = horizontal,
+        top = vertical,
+        right = horizontal,
+        bottom = vertical;
+
+  final double left;
+  final double top;
+  final double right;
+  final double bottom;
+
+  static get zero => BubbleEdges.all(0);
+
+  EdgeInsets get edgeInsets => EdgeInsets.fromLTRB(left ?? 0, top ?? 0, right ?? 0, bottom ?? 0);
+
+  @override
+  String toString() => 'BubbleEdges($left, $top, $right, $bottom)';
+}
 
 class BubbleStyle {
   const BubbleStyle({
-    this.radius = 6,
+    this.radius,
     this.nip,
-    this.nipWidth = 8,
-    this.nipHeight = 10,
-    this.nipRadius = 1,
-    this.nipOffset = 0,
-    this.showNip = true,
-    this.color = Colors.white,
-    this.elevation = 1.0,
-    this.shadowColor = Colors.black,
-    this.padding = const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
-    this.margin = EdgeInsets.zero,
+    this.nipWidth,
+    this.nipHeight,
+    this.nipRadius,
+    this.nipOffset,
+    this.showNip,
+    this.color,
+    this.elevation,
+    this.shadowColor,
+    this.padding,
+    this.margin,
     this.alignment,
   });
 
@@ -35,23 +71,27 @@ class BubbleStyle {
   final Color color;
   final double elevation;
   final Color shadowColor;
-  final EdgeInsets padding;
-  final EdgeInsetsGeometry margin;
-  final AlignmentGeometry alignment;
+  final BubbleEdges padding;
+  final BubbleEdges margin;
+  final Alignment alignment;
 }
 
 class BubbleClipper extends CustomClipper<Path> {
   BubbleClipper(this.style)
-      : super() {
-    assert(style != null);
-    assert(style.nipWidth > 0.0);
-    assert(style.nipHeight > 0.0);
-    assert(style.nipRadius >= 0.0);
-    assert(style.nipRadius <= style.nipWidth / 2.0 && style.nipRadius <= style.nipHeight / 2.0);
-    assert(style.nipOffset >= 0.0);
-    assert(style.radius <= style.nipHeight + style.nipOffset);
-    assert(style.padding != null);
-
+      : assert(style != null),
+        assert(style != null),
+        assert(style.nipWidth > 0.0),
+        assert(style.nipHeight > 0.0),
+        assert(style.nipRadius >= 0.0),
+        assert(style.nipRadius <= style.nipWidth / 2.0 && style.nipRadius <= style.nipHeight / 2.0),
+        assert(style.nipOffset >= 0.0),
+        assert(style.radius <= style.nipHeight + style.nipOffset),
+        assert(style.padding != null),
+        assert(style.padding.left != null),
+        assert(style.padding.top != null),
+        assert(style.padding.right != null),
+        assert(style.padding.bottom != null),
+        super() {
     if (style.nip != null && style.nipRadius > 0) {
       var k = style.nipHeight / style.nipWidth;
       var a = atan(k);
@@ -145,8 +185,7 @@ class BubbleClipper extends CustomClipper<Path> {
         } else {
           path2.lineTo(size.width - nipPX, style.nipOffset + nipPY);
           path2.arcToPoint(Offset(size.width - nipCX, style.nipOffset),
-              radius: Radius.circular(style.nipRadius),
-              clockwise: false);
+              radius: Radius.circular(style.nipRadius), clockwise: false);
         }
         path2.close();
 
@@ -179,27 +218,63 @@ class BubbleClipper extends CustomClipper<Path> {
   bool shouldReclip(BubbleClipper oldClipper) => false;
 }
 
-
 class Bubble extends StatelessWidget {
-  Bubble({this.style = const BubbleStyle(), this.child})
-      : bubbleClipper = BubbleClipper(style);
+  Bubble({
+    this.child,
+    double radius,
+    BubbleNip nip,
+    double nipWidth,
+    double nipHeight,
+    double nipRadius,
+    double nipOffset,
+    bool showNip,
+    Color color,
+    double elevation,
+    Color shadowColor,
+    BubbleEdges padding,
+    BubbleEdges margin,
+    Alignment alignment,
+    BubbleStyle style,
+  }) : bubbleClipper = BubbleClipper(BubbleStyle(
+          radius: radius ?? style?.radius ?? 6,
+          nip: nip ?? style?.nip ?? BubbleNip.NO,
+          nipWidth: nipWidth ?? style?.nipWidth ?? 8,
+          nipHeight: nipHeight ?? style?.nipHeight ?? 10,
+          nipRadius: nipRadius ?? style?.nipRadius ?? 1,
+          nipOffset: nipOffset ?? style?.nipOffset ?? 0,
+          showNip: showNip ?? style?.showNip ?? true,
+          color: color ?? style?.color ?? Colors.white,
+          elevation: elevation ?? style?.elevation ?? 1.0,
+          shadowColor: shadowColor ?? style?.shadowColor ?? Colors.black,
+          padding: BubbleEdges.only(
+            left: padding?.left ?? style?.padding?.left ?? 8,
+            top: padding?.top ?? style?.padding?.top ?? 6,
+            right: padding?.right ?? style?.padding?.right ?? 8,
+            bottom: padding?.bottom ?? style?.padding?.bottom ?? 6,
+          ),
+          margin: BubbleEdges.only(
+            left: margin?.left ?? style?.margin?.left ?? 0,
+            top: margin?.top ?? style?.margin?.top ?? 0,
+            right: margin?.right ?? style?.margin?.right ?? 0,
+            bottom: margin?.bottom ?? style?.margin?.bottom ?? 0,
+          ),
+          alignment: alignment ?? style?.alignment ?? Alignment.center,
+        ));
 
-  final BubbleClipper bubbleClipper;
-  final BubbleStyle style;
   final Widget child;
+  final BubbleClipper bubbleClipper;
 
   Widget build(context) {
     return Container(
-      alignment: style.alignment,
-      margin: style.margin,
-      child: PhysicalShape(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        clipper: bubbleClipper,
-        child: Container(padding: bubbleClipper.edgeInsets, child: child),
-        color: style.color,
-        elevation: style.elevation,
-        shadowColor: style.shadowColor,
-      )
-    );
+        alignment: bubbleClipper.style.alignment,
+        margin: bubbleClipper.style.margin?.edgeInsets,
+        child: PhysicalShape(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          clipper: bubbleClipper,
+          child: Container(padding: bubbleClipper.edgeInsets, child: child),
+          color: bubbleClipper.style.color,
+          elevation: bubbleClipper.style.elevation,
+          shadowColor: bubbleClipper.style.shadowColor,
+        ));
   }
 }
