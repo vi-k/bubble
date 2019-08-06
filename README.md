@@ -30,7 +30,7 @@ Bubble(
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
-  nip: BubbleNip.TOP_LEFT,
+  nip: BubbleNip.topLeft,
   child: Text('Hello, programmer!'),
 ),
 ```
@@ -48,7 +48,7 @@ Bubble(
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.TOP_LEFT,
+  nip: BubbleNip.topLeft,
   child: Text('Hello, programmer!'),
 ),
 ```
@@ -67,7 +67,7 @@ Bubble(
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.TOP_LEFT,
+  nip: BubbleNip.topLeft,
   child: Text('Hello, programmer!'),
 ),
 ```
@@ -95,14 +95,14 @@ Bubble(
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.TOP_LEFT,
+  nip: BubbleNip.topLeft,
   radius: 0,
   child: Text('Hello, programmer!'),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.TOP_LEFT,
+  nip: BubbleNip.topLeft,
   radius: 10,
   child: Text('Hello, programmer!'),
 ),
@@ -124,7 +124,7 @@ Bubble(
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.TOP_LEFT,
+  nip: BubbleNip.topLeft,
   nipWidth: 8,
   nipHeight: 20,
   child: Text('Hello, programmer!'),
@@ -145,7 +145,7 @@ Bubble(
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.TOP_LEFT,
+  nip: BubbleNip.topLeft,
   nipWidth: 30,
   nipHeight: 12,
   child: Text('Hello, programmer!'),

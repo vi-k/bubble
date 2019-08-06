@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-enum BubbleNip { no, topLeft, topRight }
+enum BubbleNip { no, leftTop, rightTop }
 
 /// Class BubbleEdges is an analog of EdgeInsets, but default values are null.
 class BubbleEdges {
@@ -62,7 +62,7 @@ class BubbleStyle {
     this.alignment,
   });
 
-  final double radius;
+  final Radius radius;
   final BubbleNip nip;
   final bool showNip;
   final double nipHeight;
@@ -94,7 +94,7 @@ class BubbleClipper extends CustomClipper<Path> {
         assert(nipRadius >= 0.0),
         assert(nipRadius <= nipWidth / 2.0 && nipRadius <= nipHeight / 2.0),
         assert(nipOffset >= 0.0),
-        assert(radius <= nipHeight + nipOffset),
+//        assert(radius <= nipHeight + nipOffset),
         assert(padding != null),
         assert(padding.left != null),
         assert(padding.top != null),
@@ -114,7 +114,7 @@ class BubbleClipper extends CustomClipper<Path> {
     }
   }
 
-  final double radius;
+  final Radius radius;
   final BubbleNip nip;
   final bool showNip;
   final double nipHeight;
@@ -131,13 +131,13 @@ class BubbleClipper extends CustomClipper<Path> {
   double _nipStickOffset = 0.0;
 
   get edgeInsets {
-    return nip == BubbleNip.topLeft
+    return nip == BubbleNip.leftTop
         ? EdgeInsets.only(
             left: nipWidth - _nipStickOffset + padding.left,
             top: padding.top,
             right: padding.right,
             bottom: padding.bottom)
-        : nip == BubbleNip.topRight
+        : nip == BubbleNip.rightTop
             ? EdgeInsets.only(
                 left: padding.left,
                 top: padding.top,
@@ -148,19 +148,32 @@ class BubbleClipper extends CustomClipper<Path> {
 
   @override
   Path getClip(Size size) {
-    var cornerRadius = Radius.circular(radius);
+    var radiusX = radius.x;
+    var radiusY = radius.y;
+    var maxRadiusX = size.width / 2;
+    var maxRadiusY = size.height / 2;
+
+    if (radiusX > maxRadiusX) {
+      radiusY *= maxRadiusX / radiusX;
+      radiusX = maxRadiusX;
+    }
+    if (radiusY > maxRadiusY) {
+      radiusX *= maxRadiusY / radiusY;
+      radiusY = maxRadiusY;
+    }
+
     var path = Path();
 
     switch (nip) {
-      case BubbleNip.topLeft:
-        path.addRRect(RRect.fromLTRBR(nipWidth - _nipStickOffset, 0, size.width, size.height, cornerRadius));
+      case BubbleNip.leftTop:
+        path.addRRect(RRect.fromLTRBR(nipWidth - _nipStickOffset, 0, size.width, size.height, radius));
 
         if (showNip) {
           // Mumbo-jumbo #1 / Танцы с бубнами #1.
           // Если делать через combine, как в случае с TOP_RIGHT, то при nipRadius = 0 и близких к нему bubble рисуется
           // нормально, зато тень игнорирует весь nip, как будто его нет, а есть только RRect
-          path.moveTo(nipWidth - _nipStickOffset + radius, nipOffset);
-          path.lineTo(nipWidth - _nipStickOffset + radius, nipOffset + nipHeight);
+          path.moveTo(nipWidth - _nipStickOffset + radiusX, nipOffset);
+          path.lineTo(nipWidth - _nipStickOffset + radiusX, nipOffset + nipHeight);
           path.lineTo(nipWidth - _nipStickOffset, nipOffset + nipHeight);
           if (nipRadius == 0) {
             path.lineTo(0, nipOffset);
@@ -188,16 +201,16 @@ class BubbleClipper extends CustomClipper<Path> {
         }
         break;
 
-      case BubbleNip.topRight:
-        path.addRRect(RRect.fromLTRBR(0, 0, size.width - nipWidth + _nipStickOffset, size.height, cornerRadius));
+      case BubbleNip.rightTop:
+        path.addRRect(RRect.fromLTRBR(0, 0, size.width - nipWidth + _nipStickOffset, size.height, radius));
 
         if (showNip) {
           // Mumbo-jumbo #2 / Танцы с бубнами #2.
           // Если делать всё в одном Path, то возникают странные глюки: если nip справа, то происходит операция xor,
           // а не union. Поэтому использую новый path, а потом объединяю
           var path2 = Path();
-          path2.moveTo(size.width - nipWidth + _nipStickOffset - radius, nipOffset);
-          path2.lineTo(size.width - nipWidth + _nipStickOffset - radius, nipOffset + nipHeight);
+          path2.moveTo(size.width - nipWidth + _nipStickOffset - radiusX, nipOffset);
+          path2.lineTo(size.width - nipWidth + _nipStickOffset - radiusX, nipOffset + nipHeight);
           path2.lineTo(size.width - nipWidth + _nipStickOffset, nipOffset + nipHeight);
           if (nipRadius == 0) {
             path2.lineTo(size.width, nipOffset);
@@ -229,7 +242,7 @@ class BubbleClipper extends CustomClipper<Path> {
         break;
 
       case BubbleNip.no:
-        path.addRRect(RRect.fromLTRBR(0, 0, size.width, size.height, cornerRadius));
+        path.addRRect(RRect.fromLTRBR(0, 0, size.width, size.height, radius));
         break;
     }
 
@@ -243,7 +256,7 @@ class BubbleClipper extends CustomClipper<Path> {
 class Bubble extends StatelessWidget {
   Bubble({
     this.child,
-    double radius,
+    Radius radius,
     BubbleNip nip,
     bool showNip,
     double nipWidth,
@@ -269,7 +282,7 @@ class Bubble extends StatelessWidget {
         ),
         alignment = alignment ?? style?.alignment ?? Alignment.center,
         bubbleClipper = BubbleClipper(
-          radius: radius ?? style?.radius ?? 6.0,
+          radius: radius ?? style?.radius ?? Radius.circular(6.0),
           nip: nip ?? style?.nip ?? BubbleNip.no,
           showNip: showNip ?? style?.showNip ?? true,
           nipWidth: nipWidth ?? style?.nipWidth ?? 8.0,
