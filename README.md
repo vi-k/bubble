@@ -21,7 +21,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_10.png?raw=true)
 
-### • nip
+### ● nip
 
 ```dart
 Bubble(
@@ -37,7 +37,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_20.png?raw=true)
 
-### • alignment
+### ● alignment
 
 ```dart
 Bubble(
@@ -55,7 +55,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_30.png?raw=true)
 
-### • color
+### ● color
 
 ```dart
 Bubble(
@@ -74,7 +74,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_40.png?raw=true)
 
-### • radius
+### ● radius
 
 ```dart
 Bubble(
@@ -110,7 +110,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_50.png?raw=true)
 
-### • nipWidth and nipHeight
+### ● nipWidth and nipHeight
 
 ```dart
 Bubble(
@@ -154,7 +154,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_70.png?raw=true)
 
-### • nipRadius
+### ● nipRadius
 
 ```dart
 for (var i = 0; i <= 6; i++)
@@ -186,7 +186,7 @@ Scheme:
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/scheme.jpg?raw=true)
 
-### • stick
+### ● stick
 
 ```dart
 for (var i = 0; i <= 6; i++)
@@ -216,7 +216,7 @@ for (var i = 0; i <= 6; i++)
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_85.png?raw=true)
 
-### • nipOffset
+### ● nipOffset
 
 ```dart
 for (var i = 0; i <= 6; i++)
@@ -268,7 +268,7 @@ for (var i = 0; i <= 12; i += 3)
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_100.png?raw=true)
 
-### • showNip
+### ● showNip
 
 Add second bubble to everyone.
 
@@ -371,7 +371,7 @@ Bubble(
 
 It's ok :)
 
-### • elevation
+### ● elevation
 
 A thick shadow.
 
@@ -469,7 +469,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_150.png?raw=true)
 
-### • shadowColor
+### ● shadowColor
 
 ```dart
 Bubble(
@@ -526,7 +526,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_160.png?raw=true)
 
-### • margin
+### ● margin
 
 ```dart
 Bubble(
@@ -567,7 +567,7 @@ Bubble(
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_180.png?raw=true)
 
-### • padding
+### ● padding
 
 ```dart
 Bubble(
