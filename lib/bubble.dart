@@ -174,18 +174,20 @@ class BubbleClipper extends CustomClipper<Path> {
           //   нормально, зато тень игнорирует весь nip, как будто его нет, а есть только RRect
           // - Если делать всё в одном Path (на один раз), то возникают странные глюки: если nip справа, то происходит
           //   операция xor, а не union. Поэтому использую новый path, а потом объединяю
-          for (int i = 0; i < 2; i++) { // Magic!
-            path.moveTo(nipWidth - _nipStickOffset + radiusX, nipOffset);
-            path.lineTo(nipWidth - _nipStickOffset + radiusX, nipOffset + nipHeight);
-            path.lineTo(nipWidth - _nipStickOffset, nipOffset + nipHeight);
-            if (nipRadius == 0) {
-              path.lineTo(0, nipOffset);
-            } else {
-              path.lineTo(_nipPX - _nipStickOffset, nipOffset + _nipPY);
-              path.arcToPoint(Offset(_nipCX - _nipStickOffset, nipOffset), radius: Radius.circular(nipRadius));
-            }
-            path.close();
+          Path path2 = Path();
+          path2.moveTo(nipWidth - _nipStickOffset + radiusX, nipOffset);
+          path2.lineTo(nipWidth - _nipStickOffset + radiusX, nipOffset + nipHeight);
+          path2.lineTo(nipWidth - _nipStickOffset, nipOffset + nipHeight);
+          if (nipRadius == 0) {
+            path2.lineTo(0, nipOffset);
+          } else {
+            path2.lineTo(_nipPX - _nipStickOffset, nipOffset + _nipPY);
+            path2.arcToPoint(Offset(_nipCX - _nipStickOffset, nipOffset), radius: Radius.circular(nipRadius));
           }
+          path2.close();
+
+          path2.addPath(path2, Offset(0,0));
+          path2.addPath(path2, Offset(0,0)); // Magic!
 
           // Invalid code for nipRadius ~~ 0
 //        var path2 = Path();
@@ -209,19 +211,21 @@ class BubbleClipper extends CustomClipper<Path> {
         path.addRRect(RRect.fromLTRBR(nipWidth - _nipStickOffset, 0, size.width, size.height, radius));
 
         if (showNip) {
-          for (int i = 0; i < 2; i++) { // Magic!
-            path.moveTo(nipWidth - _nipStickOffset + radiusX, size.height - nipOffset);
-            path.lineTo(nipWidth - _nipStickOffset + radiusX, size.height - nipOffset - nipHeight);
-            path.lineTo(nipWidth - _nipStickOffset, size.height - nipOffset - nipHeight);
-            if (nipRadius == 0) {
-              path.lineTo(0, size.height - nipOffset);
-            } else {
-              path.lineTo(_nipPX - _nipStickOffset, size.height - nipOffset - _nipPY);
-              path.arcToPoint(
-                  Offset(_nipCX - _nipStickOffset, size.height - nipOffset), radius: Radius.circular(nipRadius));
-            }
-            path.close();
+          Path path2 = Path();
+          path2.moveTo(nipWidth - _nipStickOffset + radiusX, size.height - nipOffset);
+          path2.lineTo(nipWidth - _nipStickOffset + radiusX, size.height - nipOffset - nipHeight);
+          path2.lineTo(nipWidth - _nipStickOffset, size.height - nipOffset - nipHeight);
+          if (nipRadius == 0) {
+            path2.lineTo(0, size.height - nipOffset);
+          } else {
+            path2.lineTo(_nipPX - _nipStickOffset, size.height - nipOffset - _nipPY);
+            path2.arcToPoint(
+                Offset(_nipCX - _nipStickOffset, size.height - nipOffset), radius: Radius.circular(nipRadius));
           }
+          path2.close();
+
+          path.addPath(path2, Offset(0,0));
+          path.addPath(path2, Offset(0,0)); // Magic!
         }
         break;
 
@@ -229,19 +233,21 @@ class BubbleClipper extends CustomClipper<Path> {
         path.addRRect(RRect.fromLTRBR(0, 0, size.width - nipWidth + _nipStickOffset, size.height, radius));
 
         if (showNip) {
-          for (int i = 0; i < 2; i++) { // Magic!
-            path.moveTo(size.width - nipWidth + _nipStickOffset - radiusX, nipOffset);
-            path.lineTo(size.width - nipWidth + _nipStickOffset - radiusX, nipOffset + nipHeight);
-            path.lineTo(size.width - nipWidth + _nipStickOffset, nipOffset + nipHeight);
-            if (nipRadius == 0) {
-              path.lineTo(size.width, nipOffset);
-            } else {
-              path.lineTo(size.width - _nipPX + _nipStickOffset, nipOffset + _nipPY);
-              path.arcToPoint(Offset(size.width - _nipCX + _nipStickOffset, nipOffset),
-                  radius: Radius.circular(nipRadius), clockwise: false);
-            }
-            path.close();
+          Path path2 = Path();
+          path2.moveTo(size.width - nipWidth + _nipStickOffset - radiusX, nipOffset);
+          path2.lineTo(size.width - nipWidth + _nipStickOffset - radiusX, nipOffset + nipHeight);
+          path2.lineTo(size.width - nipWidth + _nipStickOffset, nipOffset + nipHeight);
+          if (nipRadius == 0) {
+            path2.lineTo(size.width, nipOffset);
+          } else {
+            path2.lineTo(size.width - _nipPX + _nipStickOffset, nipOffset + _nipPY);
+            path2.arcToPoint(Offset(size.width - _nipCX + _nipStickOffset, nipOffset),
+                radius: Radius.circular(nipRadius), clockwise: false);
           }
+          path2.close();
+
+          path.addPath(path2, Offset(0,0));
+          path.addPath(path2, Offset(0,0)); // Magic!
         }
         break;
 
@@ -252,19 +258,21 @@ class BubbleClipper extends CustomClipper<Path> {
           // Mumbo-jumbo #2 / Танцы с бубнами #2.
           // Если делать всё в одном Path, то возникают странные глюки: если nip справа, то происходит операция xor,
           // а не union. Поэтому использую новый path, а потом объединяю
-          for (int i = 0; i < 2; i++) { // Magic!
-            path.moveTo(size.width - nipWidth + _nipStickOffset - radiusX, size.height - nipOffset);
-            path.lineTo(size.width - nipWidth + _nipStickOffset - radiusX, size.height - nipOffset - nipHeight);
-            path.lineTo(size.width - nipWidth + _nipStickOffset, size.height - nipOffset - nipHeight);
-            if (nipRadius == 0) {
-              path.lineTo(size.width, size.height - nipOffset);
-            } else {
-              path.lineTo(size.width - _nipPX + _nipStickOffset, size.height - nipOffset - _nipPY);
-              path.arcToPoint(Offset(size.width - _nipCX + _nipStickOffset, size.height - nipOffset),
-                  radius: Radius.circular(nipRadius), clockwise: false);
-            }
-            path.close();
+          Path path2 = Path();
+          path2.moveTo(size.width - nipWidth + _nipStickOffset - radiusX, size.height - nipOffset);
+          path2.lineTo(size.width - nipWidth + _nipStickOffset - radiusX, size.height - nipOffset - nipHeight);
+          path2.lineTo(size.width - nipWidth + _nipStickOffset, size.height - nipOffset - nipHeight);
+          if (nipRadius == 0) {
+            path2.lineTo(size.width, size.height - nipOffset);
+          } else {
+            path2.lineTo(size.width - _nipPX + _nipStickOffset, size.height - nipOffset - _nipPY);
+            path2.arcToPoint(Offset(size.width - _nipCX + _nipStickOffset, size.height - nipOffset),
+                radius: Radius.circular(nipRadius), clockwise: false);
           }
+          path2.close();
+
+          path.addPath(path2, Offset(0,0));
+          path.addPath(path2, Offset(0,0)); // Magic!
         }
         break;
 

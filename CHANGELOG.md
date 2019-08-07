@@ -1,3 +1,7 @@
+## 1.1.8+2 (2019-08-07)
+
+* Fixed README.md.
+
 ## 1.1.8 (2019-08-07)
 
 * Added `stick` property.
