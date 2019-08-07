@@ -1,7 +1,8 @@
 ## 1.1.8 (2019-08-07)
 
 * Added `stick` property.
-* Changed `NO`, `TOP_LEFT` and `TOP_RIGHT` to `no`, `leftTop`, `rightTop` in BubbleNip. 
+* Changed `NO`, `TOP_LEFT` and `TOP_RIGHT` to `no`, `leftTop`, `rightTop` in BubbleNip.
+* Added `leftBottom` and `rightBottom` to BubbleNip.
 * Refactoring.
 
 ## 1.1.7 (2019-08-05)
