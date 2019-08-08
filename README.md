@@ -18,7 +18,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_first.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_first.png?raw=true" width="360">
 
 ### • color
 
@@ -38,7 +38,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_color.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_color.png?raw=true" width="360">
 
 ### • nip
 
@@ -77,7 +77,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip.png?raw=true" width="360">
 
 ### • stick
 
@@ -126,7 +126,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_stick.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_stick.png?raw=true" width="360">
 
 ### • alignment
 
@@ -171,7 +171,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_alignment.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_alignment.png?raw=true" width="360">
 
 ### • nipWidth and nipHeight
 
@@ -224,7 +224,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_size.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_size.png?raw=true" width="360">
 
 ### • radius
 
@@ -296,7 +296,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_radius.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_radius.png?raw=true" width="360">
 
 ### • nipRadius
 
@@ -324,7 +324,7 @@ for (var i = 0; i <= 5; i++)
   ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_radius.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_radius.png?raw=true" width="360">
 
 Scheme:
 
@@ -356,7 +356,7 @@ for (var i = 0; i <= 15; i += 3)
   ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_offset.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_offset.png?raw=true" width="360">
 
 ### • margin
 
@@ -394,7 +394,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin.png?raw=true" width="360">
 
 ```dart
 Bubble(
@@ -430,7 +430,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin_2.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin_2.png?raw=true" width="360">
 
 ### • elevation
 
@@ -459,7 +459,7 @@ for (var i = 1; i <= 8; i *= 2)
   ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation.png?raw=true" width="360">
 
 A thin shadow.
 
@@ -529,7 +529,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation_2.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation_2.png?raw=true" width="360">
 
 ### • shadowColor
 
@@ -586,7 +586,7 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_shadow_color.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_shadow_color.png?raw=true" width="360">
 
 ### • padding
 
@@ -622,4 +622,4 @@ Bubble(
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_padding.png?raw=true)
+<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_padding.png?raw=true" width="360">
