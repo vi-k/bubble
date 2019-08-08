@@ -14,371 +14,419 @@ See [sources](https://github.com/vi-k/bubble/blob/master/example).
 
 ```dart
 Bubble(
-  child: Text('Hello, world!'),
+  child: Text('Hello, World!'),
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_10.png?raw=true)
-
-### • nip
-
-```dart
-Bubble(
-  nip: BubbleNip.rightTop,
-  child: Text('Hello, world!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 10),
-  nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 10),
-  nip: BubbleNip.rightBottom,
-  child: Text('Hello, world!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 10),
-  nip: BubbleNip.leftBottom,
-  child: Text('Hello, programmer!'),
-),
-```
-
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_20.png?raw=true)
-
-### • alignment
-
-```dart
-Bubble(
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  child: Text('Hello, world!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 10),
-  alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer!'),
-),
-```
-
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_30.png?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_first.png?raw=true)
 
 ### • color
 
 ```dart
 Bubble(
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
-  alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer!'),
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  child: Text('Hi, developer!'),
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_40.png?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_color.png?raw=true)
 
-### • radius
+### • nip
 
 ```dart
 Bubble(
-  alignment: Alignment.topRight,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
   nip: BubbleNip.rightTop,
-  radius: 0,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  radius: 10,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 10),
-  alignment: Alignment.topLeft,
   nip: BubbleNip.leftTop,
-  radius: 0,
-  child: Text('Hello, programmer!'),
+  child: Text('Hi, developer!'),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
-  alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
-  radius: 10,
-  child: Text('Hello, programmer!'),
+  nip: BubbleNip.rightBottom,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  nip: BubbleNip.leftBottom,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  nip: BubbleNip.no,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TOMORROW', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_50.png?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip.png?raw=true)
+
+### • stick
+
+```dart
+Bubble(
+  stick: true,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  stick: true,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  stick: true,
+  nip: BubbleNip.leftTop,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  stick: true,
+  nip: BubbleNip.rightBottom,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  stick: true,
+  nip: BubbleNip.leftBottom,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  stick: true,
+  nip: BubbleNip.no,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TOMORROW', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
+),
+```
+
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_stick.png?raw=true)
+
+### • alignment
+
+```dart
+Bubble(
+  alignment: Alignment.center,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.topRight,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.topLeft,
+  nip: BubbleNip.leftTop,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.topRight,
+  nip: BubbleNip.rightBottom,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.topLeft,
+  nip: BubbleNip.leftBottom,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.center,
+  nip: BubbleNip.no,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TOMORROW', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
+),
+```
+
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_alignment.png?raw=true)
 
 ### • nipWidth and nipHeight
 
 ```dart
 Bubble(
+  alignment: Alignment.center,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
   nipWidth: 8,
-  nipHeight: 20,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
+  nipHeight: 24,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
   nipWidth: 8,
-  nipHeight: 20,
-  child: Text('Hello, programmer!'),
+  nipHeight: 24,
+  nip: BubbleNip.leftTop,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.topRight,
+  nipWidth: 30,
+  nipHeight: 10,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.topLeft,
+  nipWidth: 30,
+  nipHeight: 10,
+  nip: BubbleNip.leftTop,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.center,
+  nip: BubbleNip.no,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TOMORROW', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_60.png?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_size.png?raw=true)
+
+### • radius
 
 ```dart
 Bubble(
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  nipWidth: 30,
-  nipHeight: 12,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
+  alignment: Alignment.center,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
+  radius: Radius.zero,
+  alignment: Alignment.topRight,
+  nipWidth: 8,
+  nipHeight: 24,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  radius: Radius.zero,
+  alignment: Alignment.topLeft,
+  nipWidth: 8,
+  nipHeight: 24,
+  nip: BubbleNip.leftTop,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  radius: Radius.elliptical(5.0, 10.0),
+  alignment: Alignment.topRight,
+  nipWidth: 30,
+  nipHeight: 10,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  radius: Radius.elliptical(5.0, 10.0),
+  alignment: Alignment.topLeft,
+  nipWidth: 30,
+  nipHeight: 10,
+  nip: BubbleNip.leftTop,
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  radius: Radius.circular(20.0),
+  alignment: Alignment.topRight,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  radius: Radius.circular(20.0),
   alignment: Alignment.topLeft,
   nip: BubbleNip.leftTop,
-  nipWidth: 30,
-  nipHeight: 12,
-  child: Text('Hello, programmer!'),
+  child: Text('Hi, developer!'),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10),
+  alignment: Alignment.center,
+  nip: BubbleNip.no,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TOMORROW', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_70.png?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_radius.png?raw=true)
 
 ### • nipRadius
 
 ```dart
-for (var i = 0; i <= 6; i++)
+for (var i = 0; i <= 5; i++)
   Bubble(
-    margin: BubbleEdges.only(top: 4),
+    margin: BubbleEdges.only(top: 10),
+    nipRadius: i.toDouble(),
     alignment: Alignment.topRight,
+    nipWidth: 30,
+    nipHeight: 10,
     nip: BubbleNip.rightTop,
-    nipWidth: 30,
-    nipHeight: 12,
-    nipRadius: i.toDouble(),
-    color: Color.fromARGB(255, 225, 255, 199),
-    child: Text('Hello, world!'),
+    color: Color.fromRGBO(225, 255, 199, 1.0),
+    child: Text('Hello, World!', textAlign: TextAlign.right),
   ),
-for (var i = 0; i <= 6; i++)
+for (var i = 0; i <= 5; i++)
   Bubble(
-    margin: BubbleEdges.only(top: 4),
-    alignment: Alignment.topLeft,
-    nip: BubbleNip.leftTop,
-    nipWidth: 30,
-    nipHeight: 12,
+    margin: BubbleEdges.only(top: 10),
     nipRadius: i.toDouble(),
-    child: Text('Hello, programmer!'),
+    alignment: Alignment.topLeft,
+    nipWidth: 30,
+    nipHeight: 10,
+    nip: BubbleNip.leftTop,
+    child: Text('Hi, developer!'),
   ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_80.png?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_radius.png?raw=true)
 
 Scheme:
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/scheme.jpg?raw=true)
 
-### • stick
-
-```dart
-for (var i = 0; i <= 6; i++)
-  Bubble(
-    margin: BubbleEdges.only(top: 4),
-    alignment: Alignment.topRight,
-    nip: BubbleNip.rightTop,
-    nipWidth: 30,
-    nipHeight: 12,
-    nipRadius: i.toDouble(),
-    color: Color.fromARGB(255, 225, 255, 199),
-    stick: true,
-    child: Text('Hello, world!'),
-  ),
-for (var i = 0; i <= 6; i++)
-  Bubble(
-    margin: BubbleEdges.only(top: 4),
-    alignment: Alignment.topLeft,
-    nip: BubbleNip.leftTop,
-    nipWidth: 30,
-    nipHeight: 12,
-    nipRadius: i.toDouble(),
-    stick: true,
-    child: Text('Hello, programmer!'),
-  ),
-```
-
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_85.png?raw=true)
-
 ### • nipOffset
 
 ```dart
-for (var i = 0; i <= 6; i++)
+for (var i = 0; i <= 15; i += 3)
   Bubble(
-    margin: BubbleEdges.only(top: 4),
+    margin: BubbleEdges.only(top: 10),
+    nipOffset: i.toDouble(),
     alignment: Alignment.topRight,
+    nipWidth: 30,
+    nipHeight: 10,
     nip: BubbleNip.rightTop,
-    nipWidth: 30,
-    nipHeight: 12,
-    nipRadius: i.toDouble(),
-    nipOffset: 8,
-    color: Color.fromARGB(255, 225, 255, 199),
-    child: Text('Hello, world!'),
+    color: Color.fromRGBO(225, 255, 199, 1.0),
+    child: Text('Hello, World!', textAlign: TextAlign.right),
   ),
-for (var i = 0; i <= 6; i++)
+for (var i = 0; i <= 15; i += 3)
   Bubble(
-    margin: BubbleEdges.only(top: 4),
+    margin: BubbleEdges.only(top: 10),
+    nipOffset: i.toDouble(),
     alignment: Alignment.topLeft,
-    nip: BubbleNip.leftTop,
     nipWidth: 30,
-    nipHeight: 12,
-    nipRadius: i.toDouble(),
-    nipOffset: 8,
-    child: Text('Hello, programmer!'),
+    nipHeight: 10,
+    nip: BubbleNip.leftTop,
+    child: Text('Hi, developer!'),
   ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_90.png?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_offset.png?raw=true)
 
-```dart
-for (var i = 0; i <= 12; i += 3)
-  Bubble(
-    margin: BubbleEdges.only(top: 4),
-    alignment: Alignment.topRight,
-    nip: BubbleNip.rightTop,
-    nipOffset: i.toDouble(),
-    color: Color.fromARGB(255, 225, 255, 199),
-    child: Text('Hello, world!'),
-  ),
-for (var i = 0; i <= 12; i += 3)
-  Bubble(
-    margin: BubbleEdges.only(top: 4),
-    alignment: Alignment.topLeft,
-    nip: BubbleNip.leftTop,
-    nipOffset: i.toDouble(),
-    child: Text('Hello, programmer!'),
-  ),
-```
-
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_100.png?raw=true)
-
-### • showNip
-
-Add second bubble to everyone.
+### • margin
 
 ```dart
 Bubble(
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 2),
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('How are you?'),
+  alignment: Alignment.center,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
-  alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 2),
-  alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
-  child: Text('And how are you?'),
-),
-```
-
-
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_110.png?raw=true)
-
-Second, third et al bubbles in WhatsApp haven't nips. Remove them.
-
-```dart
-Bubble(
   alignment: Alignment.topRight,
   nip: BubbleNip.rightTop,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World!', textAlign: TextAlign.right),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 2),
   alignment: Alignment.topRight,
   nip: BubbleNip.no,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('How are you?'),
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('How are you?', textAlign: TextAlign.right),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
   nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer!'),
+  child: Text('Hi, developer!'),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 2),
   alignment: Alignment.topLeft,
   nip: BubbleNip.no,
-  child: Text('And how are you?'),
+  child: Text('Well, see for yourself'),
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_120.png?raw=true)
-
-It's not that. Hide nips!
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin.png?raw=true)
 
 ```dart
 Bubble(
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world!'),
+  alignment: Alignment.center,
+  color: Color.fromRGBO(212, 234, 244, 1.0),
+  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
 ),
 Bubble(
-  margin: BubbleEdges.only(top: 2),
+  margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topRight,
   nip: BubbleNip.rightTop,
-  showNip: false,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('How are you?'),
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World! Hello, World! Hello, World! Hello, World!', textAlign: TextAlign.right),
 ),
 Bubble(
   margin: BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
   nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer!'),
+  child: Text('Hi, developer! Hi, developer! Hi, developer! Hi, developer!'),
 ),
 Bubble(
-  margin: BubbleEdges.only(top: 2),
+  margin: BubbleEdges.only(top: 10, left: 40),
+  alignment: Alignment.topRight,
+  nip: BubbleNip.rightTop,
+  color: Color.fromRGBO(225, 255, 199, 1.0),
+  child: Text('Hello, World! Hello, World! Hello, World! Hello, World!', textAlign: TextAlign.right),
+),
+Bubble(
+  margin: BubbleEdges.only(top: 10, right: 40),
   alignment: Alignment.topLeft,
   nip: BubbleNip.leftTop,
-  showNip: false,
-  child: Text('And how are you?'),
+  child: Text('Hi, developer! Hi, developer! Hi, developer! Hi, developer!'),
 ),
 ```
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_130.png?raw=true)
-
-It's ok :)
+![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin_2.png?raw=true)
 
 ### • elevation
 
@@ -534,47 +582,6 @@ Bubble(
 ```
 
 ![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_160.png?raw=true)
-
-### • margin
-
-```dart
-Bubble(
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'
-    'Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 10),
-  alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer! '
-    'Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer!'),
-),
-```
-
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_170.png?raw=true)
-
-```dart
-Bubble(
-  margin: BubbleEdges.only(left: 50),
-  alignment: Alignment.topRight,
-  nip: BubbleNip.rightTop,
-  color: Color.fromARGB(255, 225, 255, 199),
-  child: Text('Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'
-    'Hello, world! Hello, world! Hello, world! Hello, world! Hello, world! Hello, world!'),
-),
-Bubble(
-  margin: BubbleEdges.only(top: 10, right: 50),
-  alignment: Alignment.topLeft,
-  nip: BubbleNip.leftTop,
-  child: Text('Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer! '
-    'Hello, programmer! Hello, programmer! Hello, programmer! Hello, programmer!'),
-),
-```
-
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_180.png?raw=true)
 
 ### • padding
 

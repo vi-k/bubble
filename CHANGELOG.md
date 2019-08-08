@@ -1,9 +1,10 @@
+## 1.1.9 (2019-08-09)
+
+* Remake `stick`. Removed `showNip`.
+
 ## 1.1.8+2 (2019-08-07)
 
 * Fixed README.md.
-
-## 1.1.8 (2019-08-07)
-
 * Added `stick` property.
 * Changed `NO`, `TOP_LEFT` and `TOP_RIGHT` to `no`, `leftTop`, `rightTop` in BubbleNip.
 * Added `leftBottom` and `rightBottom` to BubbleNip.

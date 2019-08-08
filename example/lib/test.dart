@@ -16,3 +16,36 @@ child: ListView(
   ],
 ),
 */
+/*
+PhysicalShape(
+  clipBehavior: Clip.antiAlias,
+  clipper: MyClipper(0),
+  child: SizedBox(width: 80, height: 40),
+  color: Colors.lightGreen,
+  elevation: 2,
+),
+Divider(),
+PhysicalShape(
+  clipBehavior: Clip.antiAlias,
+  clipper: MyClipper(1),
+  child: SizedBox(width: 80, height: 40),
+  color: Colors.lightGreen,
+  elevation: 2,
+),
+Divider(),
+PhysicalShape(
+  clipBehavior: Clip.antiAlias,
+  clipper: MyClipper(2),
+  child: SizedBox(width: 80, height: 40),
+  color: Colors.lightGreen.withAlpha(64),
+  elevation: 2,
+),
+Divider(),
+PhysicalShape(
+  clipBehavior: Clip.antiAlias,
+  clipper: MyClipper(3),
+  child: SizedBox(width: 80, height: 40),
+  color: Colors.lightGreen.withAlpha(64),
+  elevation: 2,
+),
+*/
