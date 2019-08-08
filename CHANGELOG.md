@@ -1,6 +1,10 @@
 ## 1.1.9 (2019-08-09)
 
-* Remake `stick`. Removed `showNip`.
+* Remake `stick`. If `stick` set to `false`, the right offset of bubble equal to the offset from the left, not taking
+  into account the size of the nip. This allows the bubbles to line up. If `stick` set to `true`, the far side will be
+  stick to the edge.
+* Removed `showNip`. It's useless now.
+* Corrected README.md and screenshots.
 
 ## 1.1.8+2 (2019-08-07)
 

@@ -81,6 +81,10 @@ Bubble(
 
 ### • stick
 
+If `stick` set to `false` then the right offset of bubble equal to the offset from the left, not
+taking into account the size of the nip. This allows the bubbles to line up. If `stick` set to `true`, the far side
+will be stick to the edge.
+
 ```dart
 Bubble(
   stick: true,
