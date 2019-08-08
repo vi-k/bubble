@@ -186,8 +186,8 @@ class BubbleClipper extends CustomClipper<Path> {
           }
           path2.close();
 
-          path2.addPath(path2, Offset(0,0));
-          path2.addPath(path2, Offset(0,0)); // Magic!
+          path.addPath(path2, Offset(0,0));
+          path.addPath(path2, Offset(0,0)); // Magic!
 
           // Invalid code for nipRadius ~~ 0
 //        var path2 = Path();
