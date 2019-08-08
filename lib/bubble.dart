@@ -101,22 +101,20 @@ class BubbleClipper extends CustomClipper<Path> {
 
     _startOffset = _endOffset = nipWidth;
 
-    if (nip != BubbleNip.no && nipRadius > 0) {
-      var k = nipHeight / nipWidth;
-      var a = atan(k);
+    var k = nipHeight / nipWidth;
+    var a = atan(k);
 
-      _nipCX = (nipRadius + sqrt(nipRadius * nipRadius * (1 + k * k))) / k;
-      var nipStickOffset = (_nipCX - nipRadius).floorToDouble();
+    _nipCX = (nipRadius + sqrt(nipRadius * nipRadius * (1 + k * k))) / k;
+    var nipStickOffset = (_nipCX - nipRadius).floorToDouble();
 
-      _nipCX -= nipStickOffset;
-      _nipCY = nipRadius;
-      _nipPX = _nipCX - nipRadius * sin(a);
-      _nipPY = _nipCY + nipRadius * cos(a);
-      _startOffset -= nipStickOffset;
-      _endOffset -= nipStickOffset;
+    _nipCX -= nipStickOffset;
+    _nipCY = nipRadius;
+    _nipPX = _nipCX - nipRadius * sin(a);
+    _nipPY = _nipCY + nipRadius * cos(a);
+    _startOffset -= nipStickOffset;
+    _endOffset -= nipStickOffset;
 
-      if (stick) _endOffset = 0.0;
-    }
+    if (stick) _endOffset = 0.0;
   }
 
   final Radius radius;
@@ -188,8 +186,6 @@ class BubbleClipper extends CustomClipper<Path> {
           path.arcToPoint(Offset(_nipCX, nipOffset), radius: Radius.circular(nipRadius));
         }
         path.close();
-
-        path.addPath(path, Offset(0, 0));
         break;
 
       case BubbleNip.leftBottom:
