@@ -1,3 +1,6 @@
+## 1.1.9+1 (2019-08-09)
+* Fixed bug - don't draw a circle in the nip in `leftBottom` and `rightBottom` modes.
+
 ## 1.1.9 (2019-08-09)
 
 * Remake `stick`. If `stick` set to `false`, the right offset of bubble equal to the offset from the left, not taking

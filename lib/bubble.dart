@@ -200,7 +200,7 @@ class BubbleClipper extends CustomClipper<Path> {
         } else {
           path2.lineTo(_nipPX, size.height - nipOffset - _nipPY);
           path2.arcToPoint(Offset(_nipCX, size.height - nipOffset),
-              radius: Radius.circular(nipRadius));
+              radius: Radius.circular(nipRadius), clockwise: false);
         }
         path2.close();
 
@@ -239,7 +239,7 @@ class BubbleClipper extends CustomClipper<Path> {
         } else {
           path.lineTo(size.width - _nipPX, size.height - nipOffset - _nipPY);
           path.arcToPoint(Offset(size.width - _nipCX, size.height - nipOffset),
-              radius: Radius.circular(nipRadius), clockwise: false);
+              radius: Radius.circular(nipRadius));
         }
         path.close();
         break;
