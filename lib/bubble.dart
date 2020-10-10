@@ -13,6 +13,7 @@ enum BubbleNip {
   rightBottom,
   leftCenter,
   topRight,
+  topLeft,
 }
 
 /// Class BubbleEdges is an analog of EdgeInsets, but default values are null.
@@ -143,7 +144,7 @@ class BubbleClipper extends CustomClipper<Path> {
   double _nipPY;
 
   get edgeInsets {
-    if (nip == BubbleNip.topRight) {
+    if (nip == BubbleNip.topRight || nip == BubbleNip.topLeft) {
       return EdgeInsets.only(
         left: padding.left,
         top: padding.top + _startOffset,
@@ -207,7 +208,6 @@ class BubbleClipper extends CustomClipper<Path> {
         }
         path.close();
         break;
-
       case BubbleNip.leftCenter:
         path.addRRect(RRect.fromLTRBR(
             _startOffset, 0, size.width - _endOffset, size.height, radius));
@@ -283,6 +283,26 @@ class BubbleClipper extends CustomClipper<Path> {
         } else {
           path2.lineTo(size.width - nipOffset - _nipPY, _nipPX);
           path2.arcToPoint(Offset(size.width - nipOffset, _nipCX),
+              radius: Radius.circular(nipRadius));
+        }
+        path2.close();
+
+        path.addPath(path2, Offset(0, 0));
+        path.addPath(path2, Offset(0, 0)); // Magic!
+        break;
+      case BubbleNip.topLeft:
+        path.addRRect(RRect.fromLTRBR(
+            0, _startOffset, size.width, size.height - _endOffset, radius));
+
+        Path path2 = Path();
+        path2.moveTo(nipOffset, _startOffset + radiusX);
+        path2.lineTo(nipOffset + nipHeight, _startOffset + radiusX);
+        path2.lineTo(nipOffset + nipHeight, _startOffset);
+        if (nipRadius == 0) {
+          path2.lineTo(nipOffset, 0);
+        } else {
+          path2.lineTo(nipOffset + _nipPY, _nipPX);
+          path2.arcToPoint(Offset(nipOffset, _nipCX),
               radius: Radius.circular(nipRadius));
         }
         path2.close();
