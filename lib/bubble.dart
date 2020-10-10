@@ -70,8 +70,8 @@ class BubbleStyle {
     this.padding,
     this.margin,
     this.alignment,
-    this.strokeColor,
-    this.strokeWidth,
+    this.borderColor,
+    this.borderWidth,
   });
 
   final Radius radius;
@@ -87,8 +87,8 @@ class BubbleStyle {
   final BubbleEdges padding;
   final BubbleEdges margin;
   final Alignment alignment;
-  final Color strokeColor;
-  final double strokeWidth;
+  final Color borderColor;
+  final double borderWidth;
 }
 
 class BubbleClipper extends CustomClipper<Path> {
@@ -364,13 +364,13 @@ class Bubble extends StatelessWidget {
     BubbleEdges margin,
     Alignment alignment,
     BubbleStyle style,
-    final Color strokeColor,
-    final double strokeWidth,
+    final Color borderColor,
+    final double borderWidth,
   })  : color = color ?? style?.color ?? Colors.white,
         elevation = elevation ?? style?.elevation ?? 1.0,
         shadowColor = shadowColor ?? style?.shadowColor ?? Colors.black,
-        strokeColor = strokeColor ?? style?.strokeColor ?? Colors.black,
-        strokeWidth = strokeWidth ?? style?.strokeWidth ?? 0.0,
+        borderColor = borderColor ?? style?.borderColor ?? Colors.black,
+        borderWidth = borderWidth ?? style?.borderWidth ?? 0.0,
         margin = BubbleEdges.only(
           left: margin?.left ?? style?.margin?.left ?? 0.0,
           top: margin?.top ?? style?.margin?.top ?? 0.0,
@@ -401,8 +401,8 @@ class Bubble extends StatelessWidget {
   final BubbleEdges margin;
   final Alignment alignment;
   final BubbleClipper bubbleClipper;
-  final Color strokeColor;
-  final double strokeWidth;
+  final Color borderColor;
+  final double borderWidth;
 
   Widget build(context) {
     return Container(
@@ -414,8 +414,8 @@ class Bubble extends StatelessWidget {
           color: color,
           elevation: elevation,
           shadowColor: shadowColor,
-          strokeColor: strokeColor,
-          strokeWidth: strokeWidth,
+          borderColor: borderColor,
+          borderWidth: borderWidth,
         ),
         child: Container(padding: bubbleClipper.edgeInsets, child: child),
       ),
@@ -428,16 +428,16 @@ class BubblePainter extends CustomPainter {
   final Color color;
   final double elevation;
   final Color shadowColor;
-  final Color strokeColor;
-  final double strokeWidth;
+  final Color borderColor;
+  final double borderWidth;
 
   BubblePainter({
     this.clipper,
     this.color,
     this.elevation,
     this.shadowColor,
-    this.strokeColor,
-    this.strokeWidth,
+    this.borderColor,
+    this.borderWidth,
   });
 
   @override
@@ -452,13 +452,13 @@ class BubblePainter extends CustomPainter {
 
     canvas.drawPath(clipper.getClip(Size(size.width, size.height)), paint);
 
-    if (strokeWidth > 0.0) {
+    if (borderWidth > 0.0) {
       canvas.drawPath(
           clipper.getClip(size),
           Paint()
-            ..color = strokeColor
+            ..color = borderColor
             ..style = PaintingStyle.stroke
-            ..strokeWidth = strokeWidth);
+            ..strokeWidth = borderWidth);
     }
   }
 
