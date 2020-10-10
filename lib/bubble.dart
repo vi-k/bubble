@@ -302,8 +302,11 @@ class BubbleClipper extends CustomClipper<Path> {
           path2.lineTo(nipOffset, 0);
         } else {
           path2.lineTo(nipOffset + _nipPY, _nipPX);
-          path2.arcToPoint(Offset(nipOffset, _nipCX),
-              radius: Radius.circular(nipRadius));
+          path2.arcToPoint(
+            Offset(nipOffset, _nipCX),
+            radius: Radius.circular(nipRadius),
+            clockwise: false,
+          );
         }
         path2.close();
 
