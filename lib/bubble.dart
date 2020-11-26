@@ -195,40 +195,45 @@ class BubbleClipper extends CustomClipper<Path> {
 
     switch (nip) {
       case BubbleNip.leftTop:
-        Path path = Path();
-        path.addRRect(RRect.fromLTRBR(
+        Path path1 = Path();
+        path1.addRRect(RRect.fromLTRBR(
             _startOffset, 0, size.width - _endOffset, size.height, radius));
 
-        path.moveTo(_startOffset + radiusX, nipOffset);
-        path.lineTo(_startOffset + radiusX, nipOffset + nipHeight);
-        path.lineTo(_startOffset, nipOffset + nipHeight);
+        Path path2 = Path();
+
+        path2.moveTo(_startOffset + radiusX, nipOffset);
+
+        path2.lineTo(_startOffset + radiusX, nipOffset + nipHeight);
+        path2.lineTo(_startOffset, nipOffset + nipHeight);
         if (nipRadius == 0) {
-          path.lineTo(0, nipOffset);
+          path2.lineTo(0, nipOffset);
         } else {
-          path.lineTo(_nipPX, nipOffset + _nipPY);
-          path.arcToPoint(Offset(_nipCX, nipOffset),
+          path2.lineTo(_nipPX, nipOffset + _nipPY);
+          path2.arcToPoint(Offset(_nipCX, nipOffset),
               radius: Radius.circular(nipRadius));
         }
-        path.close();
-        return path;
+        path2.close();
+        return Path.combine(PathOperation.union, path1, path2);
 
       case BubbleNip.leftCenter:
-        Path path = Path();
-        path.addRRect(RRect.fromLTRBR(
+        Path path1 = Path();
+        path1.addRRect(RRect.fromLTRBR(
             _startOffset, 0, size.width - _endOffset, size.height, radius));
 
-        path.moveTo(_startOffset + radiusX, size.height / 2 - nipHeight);
-        path.lineTo(_startOffset + radiusX, size.height / 2 + nipHeight);
-        path.lineTo(_startOffset, size.height / 2 + nipHeight);
+        Path path2 = new Path();
+
+        path2.moveTo(_startOffset + radiusX, size.height / 2 - nipHeight);
+        path2.lineTo(_startOffset + radiusX, size.height / 2 + nipHeight);
+        path2.lineTo(_startOffset, size.height / 2 + nipHeight);
         if (nipRadius == 0) {
-          path.lineTo(0, size.height / 2 + nipHeight);
+          path2.lineTo(0, size.height / 2 + nipHeight);
         } else {
-          path.lineTo(_nipPX, size.height / 2 + _nipPY);
-          path.arcToPoint(Offset(_nipCX, nipOffset + size.height / 2),
+          path2.lineTo(_nipPX, size.height / 2 + _nipPY);
+          path2.arcToPoint(Offset(_nipCX, nipOffset + size.height / 2),
               radius: Radius.circular(nipRadius));
         }
-        path.close();
-        return path;
+        path2.close();
+        return Path.combine(PathOperation.union, path1, path2);
 
       case BubbleNip.leftBottom:
         Path path1 = Path();
@@ -313,25 +318,26 @@ class BubbleClipper extends CustomClipper<Path> {
         return Path.combine(PathOperation.union, path1, path2);
 
       case BubbleNip.rightBottom:
-        Path path = Path();
-        path.addRRect(RRect.fromLTRBR(
+        Path path1 = Path();
+        path1.addRRect(RRect.fromLTRBR(
             _endOffset, 0, size.width - _startOffset, size.height, radius));
 
-        path.moveTo(
+        Path path2 = Path();
+        path2.moveTo(
             size.width - _startOffset - radiusX, size.height - nipOffset);
-        path.lineTo(size.width - _startOffset - radiusX,
+        path2.lineTo(size.width - _startOffset - radiusX,
             size.height - nipOffset - nipHeight);
-        path.lineTo(
+        path2.lineTo(
             size.width - _startOffset, size.height - nipOffset - nipHeight);
         if (nipRadius == 0) {
-          path.lineTo(size.width, size.height - nipOffset);
+          path2.lineTo(size.width, size.height - nipOffset);
         } else {
-          path.lineTo(size.width - _nipPX, size.height - nipOffset - _nipPY);
-          path.arcToPoint(Offset(size.width - _nipCX, size.height - nipOffset),
+          path2.lineTo(size.width - _nipPX, size.height - nipOffset - _nipPY);
+          path2.arcToPoint(Offset(size.width - _nipCX, size.height - nipOffset),
               radius: Radius.circular(nipRadius));
         }
-        path.close();
-        return path;
+        path2.close();
+        return Path.combine(PathOperation.union, path1, path2);
 
       case BubbleNip.no:
         Path path = Path();
