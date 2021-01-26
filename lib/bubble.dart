@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-enum BubbleNip { no, leftTop, leftBottom, rightTop, rightBottom, leftCenter}
+enum BubbleNip { no, leftTop, leftBottom, rightTop, rightBottom, leftCenter, rightCenter}
 
 /// Class BubbleEdges is an analog of EdgeInsets, but default values are null.
 class BubbleEdges {
@@ -256,6 +256,22 @@ class BubbleClipper extends CustomClipper<Path> {
         } else {
           path.lineTo(size.width - _nipPX, size.height - nipOffset - _nipPY);
           path.arcToPoint(Offset(size.width - _nipCX, size.height - nipOffset),
+              radius: Radius.circular(nipRadius));
+        }
+        path.close();
+        break;
+
+      case BubbleNip.rightCenter:
+        path.addRRect(RRect.fromLTRBR(_endOffset, 0, size.width - _startOffset, size.height, radius));
+
+        path.moveTo(size.width - _startOffset - radiusX, size.height / 2 - nipOffset + nipHeight);
+        path.lineTo(size.width - _startOffset - radiusX, size.height / 2 - nipOffset - nipHeight);
+        path.lineTo(size.width - _startOffset, size.height / 2 - nipOffset - nipHeight);
+        if (nipRadius == 0) {
+          path.lineTo(size.width, size.height / 2 - nipOffset);
+        } else {
+          path.lineTo(size.width - _nipPX, size.height / 2 - nipOffset - _nipPY);
+          path.arcToPoint(Offset(size.width - _nipCX, size.height / 2 - nipOffset),
               radius: Radius.circular(nipRadius));
         }
         path.close();
