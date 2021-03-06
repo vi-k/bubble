@@ -1,13 +1,18 @@
-library bubble;
-
-import 'dart:ui';
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
-enum BubbleNip { no, leftTop, leftBottom, rightTop, rightBottom, leftCenter}
+enum BubbleNip { no, leftTop, leftBottom, rightTop, rightBottom, leftCenter }
 
 /// Class BubbleEdges is an analog of EdgeInsets, but default values are null.
 class BubbleEdges {
+  const BubbleEdges.only({
+    this.left, // = null
+    this.top, // = null
+    this.right, // = null
+    this.bottom, // = null
+  });
+
   const BubbleEdges.fromLTRB(this.left, this.top, this.right, this.bottom);
 
   const BubbleEdges.all(double value)
@@ -16,29 +21,23 @@ class BubbleEdges {
         right = value,
         bottom = value;
 
-  const BubbleEdges.only({
-    this.left, // = null
-    this.top, // = null
-    this.right, // = null
-    this.bottom, // = null
-  });
-
   const BubbleEdges.symmetric({
-    double vertical, // = null
-    double horizontal, // = null
+    double? vertical, // = null
+    double? horizontal, // = null
   })  : left = horizontal,
         top = vertical,
         right = horizontal,
         bottom = vertical;
 
-  final double left;
-  final double top;
-  final double right;
-  final double bottom;
+  final double? left;
+  final double? top;
+  final double? right;
+  final double? bottom;
 
-  static get zero => BubbleEdges.all(0);
+  static BubbleEdges get zero => const BubbleEdges.all(0);
 
-  EdgeInsets get edgeInsets => EdgeInsets.fromLTRB(left ?? 0, top ?? 0, right ?? 0, bottom ?? 0);
+  EdgeInsets get edgeInsets =>
+      EdgeInsets.fromLTRB(left ?? 0, top ?? 0, right ?? 0, bottom ?? 0);
 
   @override
   String toString() => 'BubbleEdges($left, $top, $right, $bottom)';
@@ -61,51 +60,48 @@ class BubbleStyle {
     this.alignment,
   });
 
-  final Radius radius;
-  final BubbleNip nip;
-  final double nipHeight;
-  final double nipWidth;
-  final double nipOffset;
-  final double nipRadius;
-  final bool stick;
-  final Color color;
-  final double elevation;
-  final Color shadowColor;
-  final BubbleEdges padding;
-  final BubbleEdges margin;
-  final Alignment alignment;
+  final Radius? radius;
+  final BubbleNip? nip;
+  final double? nipHeight;
+  final double? nipWidth;
+  final double? nipOffset;
+  final double? nipRadius;
+  final bool? stick;
+  final Color? color;
+  final double? elevation;
+  final Color? shadowColor;
+  final BubbleEdges? padding;
+  final BubbleEdges? margin;
+  final Alignment? alignment;
 }
 
 class BubbleClipper extends CustomClipper<Path> {
   BubbleClipper({
-    this.radius,
-    this.nip,
-    this.nipWidth,
-    this.nipHeight,
-    this.nipOffset,
-    this.nipRadius,
-    this.stick,
-    this.padding,
+    this.radius = const Radius.circular(6.0),
+    this.nip = BubbleNip.no,
+    this.nipWidth = 8,
+    this.nipHeight = 10,
+    this.nipOffset = 0,
+    this.nipRadius = 1,
+    this.stick = false,
+    this.padding = const BubbleEdges.all(0),
   })  : assert(nipWidth > 0.0),
         assert(nipHeight > 0.0),
         assert(nipRadius >= 0.0),
         assert(nipRadius <= nipWidth / 2.0 && nipRadius <= nipHeight / 2.0),
         assert(nipOffset >= 0.0),
-//        assert(radius <= nipHeight + nipOffset),
-        assert(padding != null),
         assert(padding.left != null),
         assert(padding.top != null),
         assert(padding.right != null),
         assert(padding.bottom != null),
         super() {
-
     _startOffset = _endOffset = nipWidth;
 
-    var k = nipHeight / nipWidth;
-    var a = atan(k);
+    final k = nipHeight / nipWidth;
+    final a = atan(k);
 
     _nipCX = (nipRadius + sqrt(nipRadius * nipRadius * (1 + k * k))) / k;
-    var nipStickOffset = (_nipCX - nipRadius).floorToDouble();
+    final nipStickOffset = (_nipCX - nipRadius).floorToDouble();
 
     _nipCX -= nipStickOffset;
     _nipCY = nipRadius;
@@ -114,7 +110,9 @@ class BubbleClipper extends CustomClipper<Path> {
     _startOffset -= nipStickOffset;
     _endOffset -= nipStickOffset;
 
-    if (stick) _endOffset = 0.0;
+    if (stick) {
+      _endOffset = 0.0;
+    }
   }
 
   final Radius radius;
@@ -126,39 +124,41 @@ class BubbleClipper extends CustomClipper<Path> {
   final bool stick;
   final BubbleEdges padding;
 
-  double _startOffset; // Offsets of the bubble
-  double _endOffset;
-  double _nipCX; // The center of the circle
-  double _nipCY;
-  double _nipPX; // The point of contact of the nip with the circle
-  double _nipPY;
+  late double _startOffset; // Offsets of the bubble
+  late double _endOffset;
+  late double _nipCX; // The center of the circle
+  late double _nipCY;
+  late double _nipPX; // The point of contact of the nip with the circle
+  late double _nipPY;
 
-  get edgeInsets {
-    return nip == BubbleNip.leftTop || nip == BubbleNip.leftBottom || nip == BubbleNip.leftCenter
+  EdgeInsets get edgeInsets {
+    return nip == BubbleNip.leftTop ||
+            nip == BubbleNip.leftBottom ||
+            nip == BubbleNip.leftCenter
         ? EdgeInsets.only(
-            left: _startOffset + padding.left,
-            top: padding.top,
-            right: _endOffset + padding.right,
-            bottom: padding.bottom)
+            left: _startOffset + (padding.left ?? 0),
+            top: padding.top ?? 0,
+            right: _endOffset + (padding.right ?? 0),
+            bottom: padding.bottom ?? 0)
         : nip == BubbleNip.rightTop || nip == BubbleNip.rightBottom
             ? EdgeInsets.only(
-                left: _endOffset + padding.left,
-                top: padding.top,
-                right: _startOffset + padding.right,
-                bottom: padding.bottom)
+                left: _endOffset + (padding.left ?? 0),
+                top: padding.top ?? 0,
+                right: _startOffset + (padding.right ?? 0),
+                bottom: padding.bottom ?? 0)
             : EdgeInsets.only(
-                left: _endOffset + padding.left,
-                top: padding.top,
-                right: _endOffset + padding.right,
-                bottom: padding.bottom);
+                left: _endOffset + (padding.left ?? 0),
+                top: padding.top ?? 0,
+                right: _endOffset + (padding.right ?? 0),
+                bottom: padding.bottom ?? 0);
   }
 
   @override
   Path getClip(Size size) {
-    var radiusX = radius.x;
-    var radiusY = radius.y;
-    var maxRadiusX = size.width / 2;
-    var maxRadiusY = size.height / 2;
+    double radiusX = radius.x;
+    double radiusY = radius.y;
+    final maxRadiusX = size.width / 2;
+    final maxRadiusY = size.height / 2;
 
     if (radiusX > maxRadiusX) {
       radiusY *= maxRadiusX / radiusX;
@@ -169,12 +169,12 @@ class BubbleClipper extends CustomClipper<Path> {
       radiusY = maxRadiusY;
     }
 
-    var path = Path();
+    final path = Path();
 
     switch (nip) {
       case BubbleNip.leftTop:
-        path.addRRect(RRect.fromLTRBR(_startOffset, 0,
-            size.width - _endOffset, size.height, radius));
+        path.addRRect(RRect.fromLTRBR(
+            _startOffset, 0, size.width - _endOffset, size.height, radius));
 
         path.moveTo(_startOffset + radiusX, nipOffset);
         path.lineTo(_startOffset + radiusX, nipOffset + nipHeight);
@@ -183,7 +183,8 @@ class BubbleClipper extends CustomClipper<Path> {
           path.lineTo(0, nipOffset);
         } else {
           path.lineTo(_nipPX, nipOffset + _nipPY);
-          path.arcToPoint(Offset(_nipCX, nipOffset), radius: Radius.circular(nipRadius));
+          path.arcToPoint(Offset(_nipCX, nipOffset),
+              radius: Radius.circular(nipRadius));
         }
         path.close();
         break;
@@ -206,11 +207,13 @@ class BubbleClipper extends CustomClipper<Path> {
         break;
 
       case BubbleNip.leftBottom:
-        path.addRRect(RRect.fromLTRBR(_startOffset, 0, size.width - _endOffset, size.height, radius));
+        path.addRRect(RRect.fromLTRBR(
+            _startOffset, 0, size.width - _endOffset, size.height, radius));
 
-        Path path2 = Path();
+        final path2 = Path();
         path2.moveTo(_startOffset + radiusX, size.height - nipOffset);
-        path2.lineTo(_startOffset + radiusX, size.height - nipOffset - nipHeight);
+        path2.lineTo(
+            _startOffset + radiusX, size.height - nipOffset - nipHeight);
         path2.lineTo(_startOffset, size.height - nipOffset - nipHeight);
         if (nipRadius == 0) {
           path2.lineTo(0, size.height - nipOffset);
@@ -221,16 +224,18 @@ class BubbleClipper extends CustomClipper<Path> {
         }
         path2.close();
 
-        path.addPath(path2, Offset(0, 0));
-        path.addPath(path2, Offset(0, 0)); // Magic!
+        path.addPath(path2, const Offset(0, 0));
+        path.addPath(path2, const Offset(0, 0)); // Magic!
         break;
 
       case BubbleNip.rightTop:
-        path.addRRect(RRect.fromLTRBR(_endOffset, 0, size.width - _startOffset, size.height, radius));
+        path.addRRect(RRect.fromLTRBR(
+            _endOffset, 0, size.width - _startOffset, size.height, radius));
 
-        Path path2 = Path();
+        final Path path2 = Path();
         path2.moveTo(size.width - _startOffset - radiusX, nipOffset);
-        path2.lineTo(size.width - _startOffset - radiusX, nipOffset + nipHeight);
+        path2.lineTo(
+            size.width - _startOffset - radiusX, nipOffset + nipHeight);
         path2.lineTo(size.width - _startOffset, nipOffset + nipHeight);
         if (nipRadius == 0) {
           path2.lineTo(size.width, nipOffset);
@@ -241,16 +246,20 @@ class BubbleClipper extends CustomClipper<Path> {
         }
         path2.close();
 
-        path.addPath(path2, Offset(0, 0));
-        path.addPath(path2, Offset(0, 0)); // Magic!
+        path.addPath(path2, const Offset(0, 0));
+        path.addPath(path2, const Offset(0, 0)); // Magic!
         break;
 
       case BubbleNip.rightBottom:
-        path.addRRect(RRect.fromLTRBR(_endOffset, 0, size.width - _startOffset, size.height, radius));
+        path.addRRect(RRect.fromLTRBR(
+            _endOffset, 0, size.width - _startOffset, size.height, radius));
 
-        path.moveTo(size.width - _startOffset - radiusX, size.height - nipOffset);
-        path.lineTo(size.width - _startOffset - radiusX, size.height - nipOffset - nipHeight);
-        path.lineTo(size.width - _startOffset, size.height - nipOffset - nipHeight);
+        path.moveTo(
+            size.width - _startOffset - radiusX, size.height - nipOffset);
+        path.lineTo(size.width - _startOffset - radiusX,
+            size.height - nipOffset - nipHeight);
+        path.lineTo(
+            size.width - _startOffset, size.height - nipOffset - nipHeight);
         if (nipRadius == 0) {
           path.lineTo(size.width, size.height - nipOffset);
         } else {
@@ -262,7 +271,8 @@ class BubbleClipper extends CustomClipper<Path> {
         break;
 
       case BubbleNip.no:
-        path.addRRect(RRect.fromLTRBR(_endOffset, 0, size.width - _endOffset, size.height, radius));
+        path.addRRect(RRect.fromLTRBR(
+            _endOffset, 0, size.width - _endOffset, size.height, radius));
         break;
     }
 
@@ -276,20 +286,20 @@ class BubbleClipper extends CustomClipper<Path> {
 class Bubble extends StatelessWidget {
   Bubble({
     this.child,
-    Radius radius,
-    BubbleNip nip,
-    double nipWidth,
-    double nipHeight,
-    double nipOffset,
-    double nipRadius,
-    bool stick,
-    Color color,
-    double elevation,
-    Color shadowColor,
-    BubbleEdges padding,
-    BubbleEdges margin,
-    Alignment alignment,
-    BubbleStyle style,
+    Radius radius = const Radius.circular(6.0),
+    BubbleNip nip = BubbleNip.no,
+    double nipWidth = 8,
+    double nipHeight = 10,
+    double nipOffset = 0,
+    double nipRadius = 1,
+    bool stick = false,
+    Color? color,
+    double? elevation,
+    Color? shadowColor,
+    BubbleEdges? padding,
+    BubbleEdges? margin,
+    this.alignment,
+    BubbleStyle? style,
   })  : color = color ?? style?.color ?? Colors.white,
         elevation = elevation ?? style?.elevation ?? 1.0,
         shadowColor = shadowColor ?? style?.shadowColor ?? Colors.black,
@@ -299,15 +309,14 @@ class Bubble extends StatelessWidget {
           right: margin?.right ?? style?.margin?.right ?? 0.0,
           bottom: margin?.bottom ?? style?.margin?.bottom ?? 0.0,
         ),
-        alignment = alignment ?? style?.alignment ?? null,
         bubbleClipper = BubbleClipper(
-          radius: radius ?? style?.radius ?? Radius.circular(6.0),
-          nip: nip ?? style?.nip ?? BubbleNip.no,
-          nipWidth: nipWidth ?? style?.nipWidth ?? 8.0,
-          nipHeight: nipHeight ?? style?.nipHeight ?? 10.0,
-          nipOffset: nipOffset ?? style?.nipOffset ?? 0.0,
-          nipRadius: nipRadius ?? style?.nipRadius ?? 1.0,
-          stick: stick ?? style?.stick ?? false,
+          radius: radius,
+          nip: nip,
+          nipWidth: nipWidth,
+          nipHeight: nipHeight,
+          nipOffset: nipOffset,
+          nipRadius: nipRadius,
+          stick: stick,
           padding: BubbleEdges.only(
             left: padding?.left ?? style?.padding?.left ?? 8.0,
             top: padding?.top ?? style?.padding?.top ?? 6.0,
@@ -316,18 +325,19 @@ class Bubble extends StatelessWidget {
           ),
         );
 
-  final Widget child;
   final Color color;
+  final Widget? child;
   final double elevation;
   final Color shadowColor;
-  final BubbleEdges margin;
-  final Alignment alignment;
-  final BubbleClipper bubbleClipper;
+  final Alignment? alignment;
+  late final BubbleEdges margin;
+  late final BubbleClipper bubbleClipper;
 
+  @override
   Widget build(context) {
     return Container(
       alignment: alignment,
-      margin: margin?.edgeInsets,
+      margin: margin.edgeInsets,
       child: CustomPaint(
         painter: BubblePainter(
           clipper: bubbleClipper,
@@ -342,17 +352,17 @@ class Bubble extends StatelessWidget {
 }
 
 class BubblePainter extends CustomPainter {
+  BubblePainter({
+    required this.clipper,
+    required this.color,
+    required this.elevation,
+    required this.shadowColor,
+  });
+
   final CustomClipper<Path> clipper;
   final Color color;
   final double elevation;
   final Color shadowColor;
-
-  BubblePainter({
-    this.clipper,
-    this.color,
-    this.elevation,
-    this.shadowColor,
-  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -367,7 +377,5 @@ class BubblePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter old) {
-    return false;
-  }
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
