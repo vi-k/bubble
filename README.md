@@ -81,9 +81,9 @@ Bubble(
 
 ### • stick
 
-If `stick` set to `false` then the right offset of bubble equal to the offset from the left, not
-taking into account the size of the nip. This allows the bubbles to line up. If `stick` set to `true`, the far side
-will be stick to the edge.
+If `stick` set to `false` the right offset of bubble equal to the offset from
+the left, not taking into account the size of the nip. This allows the bubbles
+to line up. If `stick` set to `true`, the far side will be stick to the edge.
 
 ```dart
 Bubble(
@@ -363,34 +363,38 @@ for (var i = 0; i <= 15; i += 3)
 ```dart
 Bubble(
   alignment: Alignment.center,
-  color: Color.fromRGBO(212, 234, 244, 1.0),
-  child: Text('TODAY', textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
+  color: const Color.fromRGBO(212, 234, 244, 1),
+  child: const Text('TODAY',
+      textAlign: TextAlign.center,
+      style: TextStyle(fontSize: 11)),
 ),
 Bubble(
-  margin: BubbleEdges.only(top: 10),
+  margin: const BubbleEdges.only(top: 10),
   alignment: Alignment.topRight,
   nip: BubbleNip.rightTop,
-  color: Color.fromRGBO(225, 255, 199, 1.0),
-  child: Text('Hello, World!', textAlign: TextAlign.right),
+  color: const Color.fromRGBO(225, 255, 199, 1),
+  child: const Text('Hello, World!', textAlign: TextAlign.right),
 ),
 Bubble(
-  margin: BubbleEdges.only(top: 2),
+  margin: const BubbleEdges.only(top: 2),
   alignment: Alignment.topRight,
-  nip: BubbleNip.no,
-  color: Color.fromRGBO(225, 255, 199, 1.0),
-  child: Text('How are you?', textAlign: TextAlign.right),
+  nip: BubbleNip.rightTop,
+  showNip: false,
+  color: const Color.fromRGBO(225, 255, 199, 1),
+  child: const Text('How are you?', textAlign: TextAlign.right),
 ),
 Bubble(
-  margin: BubbleEdges.only(top: 10),
+  margin: const BubbleEdges.only(top: 10),
   alignment: Alignment.topLeft,
   nip: BubbleNip.leftTop,
-  child: Text('Hi, developer!'),
+  child: const Text('Hi, developer!'),
 ),
 Bubble(
-  margin: BubbleEdges.only(top: 2),
+  margin: const BubbleEdges.only(top: 2),
   alignment: Alignment.topLeft,
-  nip: BubbleNip.no,
-  child: Text('Well, see for yourself'),
+  nip: BubbleNip.leftTop,
+  showNip: false,
+  child: const Text('Well, see for yourself'),
 ),
 ```
 

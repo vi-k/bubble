@@ -1,10 +1,20 @@
+## 1.2.0 (2021-03-10)
+
+* Null safety!
+* Added `BubbleNip.leftCenter` and `BubbleNip.rightCenter`. Since now the width
+  for top/bottom and center is different you need ti use the `showNip` parameter
+  instead of BubbleNip.no to remove the nip.
+
 ## 1.1.9+1 (2019-08-09)
-* Fixed bug - don't draw a circle in the nip in `leftBottom` and `rightBottom` modes.
+
+* Fixed bug - don't draw a circle in the nip in `leftBottom` and `rightBottom`
+  modes.
 
 ## 1.1.9 (2019-08-09)
 
-* Remake `stick`. If `stick` set to `false`, the right offset of bubble equal to the offset from the left, not taking
-  into account the size of the nip. This allows the bubbles to line up. If `stick` set to `true`, the far side will be
+* Remake `stick`. If `stick` set to `false`, the right offset of bubble equal to
+  the offset from the left, not taking into account the size of the nip. This
+  allows the bubbles to line up. If `stick` set to `true`, the far side will be
   stick to the edge.
 * Removed `showNip`. It's useless now.
 * Corrected README.md and screenshots.
@@ -13,15 +23,18 @@
 
 * Fixed README.md.
 * Added `stick` property.
-* Changed `NO`, `TOP_LEFT` and `TOP_RIGHT` to `no`, `leftTop`, `rightTop` in BubbleNip.
+* Changed `NO`, `TOP_LEFT` and `TOP_RIGHT` to `no`, `leftTop`, `rightTop` in
+  BubbleNip.
 * Added `leftBottom` and `rightBottom` to BubbleNip.
 * Refactoring.
 
 ## 1.1.7 (2019-08-05)
 
-* Added additional properties similar to properties in `style`. They are priority.
-* EdgeInsets replaced by class BubbleEdges. It similar to EdgeInsets, but default values are null. Thus,
-  `padding: BubbleEdges.only(top: 2)` will only replace `padding.top` without affecting `left`, `right` and `bottom`.
+* Added additional properties similar to properties in `style`. They are
+  priority.
+* EdgeInsets replaced by class BubbleEdges. It similar to EdgeInsets, but
+  default values are null. Thus, `padding: BubbleEdges.only(top: 2)` will only
+  replace `padding.top` without affecting `left`, `right` and `bottom`.
 
 ## 1.1.6 (2019-07-31)
 

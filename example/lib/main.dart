@@ -1,97 +1,167 @@
 import 'package:flutter/material.dart';
 import 'package:bubble/bubble.dart';
+import 'package:bubble/issue_clipper.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static const TITLE = 'Bubble Demo';
+  static const title = 'Bubble Demo';
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: TITLE,
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
-      home: MyHomePage(),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        title: title,
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+        ),
+        home: const MyHomePage(
+          title: title,
+        ),
+      );
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  const MyHomePage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  static const styleSomebody = BubbleStyle(
+    nip: BubbleNip.leftCenter,
+    color: Colors.white,
+    margin: BubbleEdges.only(top: 8, right: 50),
+    alignment: Alignment.topLeft,
+  );
+
+  static const styleMe = BubbleStyle(
+    nip: BubbleNip.rightCenter,
+    color: Color.fromARGB(255, 225, 255, 199),
+    margin: BubbleEdges.only(top: 8, left: 50),
+    alignment: Alignment.topRight,
+  );
+
   @override
-  Widget build(BuildContext context) {
-    double pixelRatio = MediaQuery.of(context).devicePixelRatio;
-    double px = 1 / pixelRatio;
-
-    BubbleStyle styleSomebody = BubbleStyle(
-      nip: BubbleNip.leftTop,
-      color: Colors.white,
-      elevation: 1 * px,
-      margin: BubbleEdges.only(top: 8.0, right: 50.0),
-      alignment: Alignment.topLeft,
-    );
-    BubbleStyle styleMe = BubbleStyle(
-      nip: BubbleNip.rightTop,
-      color: Color.fromARGB(255, 225, 255, 199),
-      elevation: 1 * px,
-      margin: BubbleEdges.only(top: 8.0, left: 50.0),
-      alignment: Alignment.topRight,
-    );
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('${MyApp.TITLE} (pixel ratio: $pixelRatio)'),
-      ),
-      body: Container(
-        color: Colors.yellow.withAlpha(64),
-        child: ListView(
-          padding: EdgeInsets.all(8.0),
-          children: [
-            Bubble(
-              alignment: Alignment.center,
-              color: Color.fromARGB(255, 212, 234, 244),
-              elevation: 1 * px,
-              margin: BubbleEdges.only(top: 8.0),
-              child: Text('TODAY', style: TextStyle(fontSize: 10)),
-            ),
-            Bubble(
-              style: styleSomebody,
-              child: Text('Hi Jason. Sorry to bother you. I have a queston for you.'),
-            ),
-            Bubble(
-              style: styleMe,
-              child: Text('Whats\'up?'),
-            ),
-            Bubble(
-              style: styleSomebody,
-              child: Text('I\'ve been having a problem with my computer.'),
-            ),
-            Bubble(
-              style: styleSomebody,
-              margin: BubbleEdges.only(top: 2.0),
-              nip: BubbleNip.no,
-              child: Text('Can you help me?'),
-            ),
-            Bubble(
-              style: styleMe,
-              child: Text('Ok'),
-            ),
-            Bubble(
-              style: styleMe,
-              nip: BubbleNip.no,
-              margin: BubbleEdges.only(top: 2.0),
-              child: Text('What\'s the problem?'),
-            ),
-          ],
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
-  }
+        body: Container(
+          color: Colors.yellow.withAlpha(64),
+          child: ListView(
+            padding: const EdgeInsets.all(8),
+            children: [
+              Bubble(
+                alignment: Alignment.center,
+                color: const Color.fromARGB(255, 212, 234, 244),
+                margin: const BubbleEdges.only(top: 8),
+                child: const Text(
+                  'TODAY',
+                  style: TextStyle(fontSize: 10),
+                ),
+              ),
+              Bubble(
+                style: styleSomebody,
+                child: const Text(
+                    'Hi Jason. Sorry to bother you. I have a queston for you.'),
+              ),
+              Bubble(
+                style: styleMe,
+                child: const Text("Whats'up?"),
+              ),
+              Bubble(
+                style: styleSomebody,
+                child:
+                    const Text("I've been having a problem with my computer."),
+              ),
+              Bubble(
+                style: styleSomebody,
+                margin: const BubbleEdges.only(top: 2),
+                showNip: false,
+                child: const Text('Can you help me?'),
+              ),
+              Bubble(
+                style: styleMe,
+                child: const Text('Ok'),
+              ),
+              Bubble(
+                style: styleMe,
+                showNip: false,
+                margin: const BubbleEdges.only(top: 2),
+                child: const Text("What's the problem?"),
+              ),
+              Bubble(
+                alignment: Alignment.center,
+                color: const Color.fromARGB(255, 212, 234, 244),
+                margin: const BubbleEdges.only(top: 32, bottom: 16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      'The failed shadow',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    // Platform.,
+                    MaterialButton(
+                      onPressed: () async {
+                        const url =
+                            'https://github.com/flutter/flutter/issues/37779';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw Exception('Could not launch $url');
+                        }
+                      },
+                      child: const Text(
+                        'https://github.com/flutter/flutter/issues/37779',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              PhysicalShape(
+                clipBehavior: Clip.antiAlias,
+                clipper: IssueClipper(0),
+                color: Colors.lightGreen,
+                elevation: 2,
+                child: const SizedBox(width: 80, height: 40),
+              ),
+              const Divider(),
+              PhysicalShape(
+                clipBehavior: Clip.antiAlias,
+                clipper: IssueClipper(1),
+                color: Colors.lightGreen,
+                elevation: 2,
+                child: const SizedBox(width: 80, height: 40),
+              ),
+              const Divider(),
+              PhysicalShape(
+                clipBehavior: Clip.antiAlias,
+                clipper: IssueClipper(2),
+                color: Colors.lightGreen.withAlpha(64),
+                elevation: 2,
+                child: const SizedBox(width: 80, height: 40),
+              ),
+              const Divider(),
+              PhysicalShape(
+                clipBehavior: Clip.antiAlias,
+                clipper: IssueClipper(3),
+                color: Colors.lightGreen.withAlpha(64),
+                elevation: 2,
+                child: const SizedBox(width: 80, height: 40),
+              ),
+            ],
+          ),
+        ),
+      );
 }
