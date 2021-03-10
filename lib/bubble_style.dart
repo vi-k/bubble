@@ -12,6 +12,9 @@ class BubbleStyle {
     this.nipRadius,
     this.stick,
     this.color,
+    this.borderColor,
+    this.borderWidth,
+    this.borderUp,
     this.elevation,
     this.shadowColor,
     this.padding,
@@ -28,9 +31,12 @@ class BubbleStyle {
   final double? nipRadius;
   final bool? stick;
   final Color? color;
+  final Color? borderColor;
+  final double? borderWidth;
+  final bool? borderUp;
   final double? elevation;
   final Color? shadowColor;
   final BubbleEdges? padding;
   final BubbleEdges? margin;
-  final Alignment? alignment;
+  final AlignmentGeometry? alignment;
 }

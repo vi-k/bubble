@@ -36,6 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static const styleSomebody = BubbleStyle(
     nip: BubbleNip.leftCenter,
     color: Colors.white,
+    borderColor: Colors.blue,
+    borderWidth: 1,
+    elevation: 4,
     margin: BubbleEdges.only(top: 8, right: 50),
     alignment: Alignment.topLeft,
   );
@@ -43,6 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static const styleMe = BubbleStyle(
     nip: BubbleNip.rightCenter,
     color: Color.fromARGB(255, 225, 255, 199),
+    borderColor: Colors.blue,
+    borderWidth: 1,
+    elevation: 4,
     margin: BubbleEdges.only(top: 8, left: 50),
     alignment: Alignment.topRight,
   );
@@ -60,6 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Bubble(
                 alignment: Alignment.center,
                 color: const Color.fromARGB(255, 212, 234, 244),
+                borderColor: Colors.black,
+                borderWidth: 2,
                 margin: const BubbleEdges.only(top: 8),
                 child: const Text(
                   'TODAY',
@@ -82,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Bubble(
                 style: styleSomebody,
-                margin: const BubbleEdges.only(top: 2),
+                margin: const BubbleEdges.only(top: 4),
                 showNip: false,
                 child: const Text('Can you help me?'),
               ),
@@ -93,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Bubble(
                 style: styleMe,
                 showNip: false,
-                margin: const BubbleEdges.only(top: 2),
+                margin: const BubbleEdges.only(top: 4),
                 child: const Text("What's the problem?"),
               ),
               Bubble(
@@ -160,6 +168,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 2,
                 child: const SizedBox(width: 80, height: 40),
               ),
+              Bubble(
+                margin: const BubbleEdges.only(top: 5),
+                elevation: 10,
+                shadowColor: Colors.red[900],
+                alignment: Alignment.topRight,
+                nip: BubbleNip.rightTop,
+                color: Colors.green,
+                child: const Text('dsfdfdfg'),
+              )
             ],
           ),
         ),

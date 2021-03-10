@@ -1,6 +1,6 @@
 name: bubble
 description: A Flutter widget for chat like a speech bubble in Whatsapp and others.
-version: 1.2.0
+version: 1.2.1
 homepage: https://github.com/vi-k/bubble
 
 environment:

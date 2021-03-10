@@ -22,6 +22,7 @@ enum BubbleNip {
 
 class Bubble extends StatelessWidget {
   Bubble({
+    Key? key,
     this.child,
     Radius? radius,
     bool? showNip,
@@ -32,13 +33,19 @@ class Bubble extends StatelessWidget {
     double? nipRadius,
     bool? stick,
     Color? color,
+    Color? borderColor,
+    double? borderWidth,
+    bool? borderUp,
     double? elevation,
     Color? shadowColor,
     BubbleEdges? padding,
     BubbleEdges? margin,
-    Alignment? alignment,
+    AlignmentGeometry? alignment,
     BubbleStyle? style,
   })  : color = color ?? style?.color ?? Colors.white,
+        borderColor = borderColor ?? style?.borderColor ?? Colors.transparent,
+        borderWidth = borderWidth ?? style?.borderWidth ?? 1,
+        borderUp = borderUp ?? style?.borderUp ?? true,
         elevation = elevation ?? style?.elevation ?? 1,
         shadowColor = shadowColor ?? style?.shadowColor ?? Colors.black,
         margin = EdgeInsets.only(
@@ -63,24 +70,32 @@ class Bubble extends StatelessWidget {
             right: padding?.right ?? style?.padding?.right ?? 8,
             bottom: padding?.bottom ?? style?.padding?.bottom ?? 6,
           ),
-        );
+        ),
+        super(key: key);
 
   final Widget? child;
   final Color color;
+  final Color borderColor;
+  final double borderWidth;
+  final bool borderUp;
   final double elevation;
   final Color shadowColor;
   final EdgeInsets margin;
-  final Alignment? alignment;
+  final AlignmentGeometry? alignment;
   final BubbleClipper bubbleClipper;
 
   @override
   Widget build(BuildContext context) => Container(
+        key: key,
         alignment: alignment,
         margin: margin,
         child: CustomPaint(
           painter: BubblePainter(
             clipper: bubbleClipper,
             color: color,
+            borderColor: borderColor,
+            borderWidth: borderWidth,
+            borderUp: borderUp,
             elevation: elevation,
             shadowColor: shadowColor,
           ),

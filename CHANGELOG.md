@@ -1,3 +1,9 @@
+## 1.2.1 (2021-03-10)
+
+* Added a border (`borderColor`, `borderWidth`, `borderUp`).
+* Changed `Alignment` to `AlignmentGeometry`.
+* Added a key.
+
 ## 1.2.0 (2021-03-10)
 
 * Null safety!

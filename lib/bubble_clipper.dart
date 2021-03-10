@@ -102,7 +102,7 @@ class BubbleClipper extends CustomClipper<Path> {
       radiusY = maxRadiusY;
     }
 
-    final path = Path();
+    var path = Path();
 
     switch (nip) {
       case BubbleNip.leftTop:
@@ -127,15 +127,15 @@ class BubbleClipper extends CustomClipper<Path> {
     if (showNip) {
       switch (nip) {
         case BubbleNip.leftTop:
-          path
+          final path2 = Path()
             ..moveTo(_startOffset + radiusX, nipOffset)
             ..lineTo(_startOffset + radiusX, nipOffset + nipHeight)
             ..lineTo(_startOffset, nipOffset + nipHeight);
 
           if (nipRadius == 0) {
-            path.lineTo(0, nipOffset);
+            path2.lineTo(0, nipOffset);
           } else {
-            path
+            path2
               ..lineTo(_nipPX, nipOffset + _nipPY)
               ..arcToPoint(
                 Offset(_nipCX, nipOffset),
@@ -143,23 +143,24 @@ class BubbleClipper extends CustomClipper<Path> {
               );
           }
 
-          path.close();
+          path2.close();
+          path = Path.combine(PathOperation.union, path, path2);
           break;
 
         case BubbleNip.leftCenter:
           final cy = nipOffset + size.height / 2;
           final nipHalf = nipHeight / 2;
 
-          path
+          final path2 = Path()
             ..moveTo(_startOffset, cy - nipHalf)
             ..lineTo(_startOffset + radiusX, cy - nipHalf)
             ..lineTo(_startOffset + radiusX, cy + nipHalf)
             ..lineTo(_startOffset, cy + nipHalf);
 
           if (nipRadius == 0) {
-            path.lineTo(0, cy);
+            path2.lineTo(0, cy);
           } else {
-            path
+            path2
               ..lineTo(_nipPX, cy + _nipPY)
               ..arcToPoint(
                 Offset(_nipPX, cy - _nipPY),
@@ -167,7 +168,8 @@ class BubbleClipper extends CustomClipper<Path> {
               );
           }
 
-          path.close();
+          path2.close();
+          path = Path.combine(PathOperation.union, path, path2);
           break;
 
         case BubbleNip.leftBottom:
@@ -190,10 +192,7 @@ class BubbleClipper extends CustomClipper<Path> {
           }
 
           path2.close();
-
-          // temporary solution to the issue:
-          // https://github.com/flutter/flutter/issues/37779
-          path..addPath(path2, Offset.zero)..addPath(path2, Offset.zero);
+          path = Path.combine(PathOperation.union, path, path2);
           break;
 
         case BubbleNip.rightTop:
@@ -213,11 +212,9 @@ class BubbleClipper extends CustomClipper<Path> {
                 clockwise: false,
               );
           }
-          path2.close();
 
-          // temporary solution to the issue:
-          // https://github.com/flutter/flutter/issues/37779
-          path..addPath(path2, Offset.zero)..addPath(path2, Offset.zero);
+          path2.close();
+          path = Path.combine(PathOperation.union, path, path2);
           break;
 
         case BubbleNip.rightCenter:
@@ -241,15 +238,13 @@ class BubbleClipper extends CustomClipper<Path> {
                 clockwise: false,
               );
           }
-          path2.close();
 
-          // temporary solution to the issue:
-          // https://github.com/flutter/flutter/issues/37779
-          path..addPath(path2, Offset.zero)..addPath(path2, Offset.zero);
+          path2.close();
+          path = Path.combine(PathOperation.union, path, path2);
           break;
 
         case BubbleNip.rightBottom:
-          path
+          final path2 = Path()
             ..moveTo(
                 size.width - _startOffset - radiusX, size.height - nipOffset)
             ..lineTo(size.width - _startOffset - radiusX,
@@ -258,16 +253,18 @@ class BubbleClipper extends CustomClipper<Path> {
                 size.width - _startOffset, size.height - nipOffset - nipHeight);
 
           if (nipRadius == 0) {
-            path.lineTo(size.width, size.height - nipOffset);
+            path2.lineTo(size.width, size.height - nipOffset);
           } else {
-            path
+            path2
               ..lineTo(size.width - _nipPX, size.height - nipOffset - _nipPY)
               ..arcToPoint(
                 Offset(size.width - _nipCX, size.height - nipOffset),
                 radius: Radius.circular(nipRadius),
               );
           }
-          path.close();
+
+          path2.close();
+          path = Path.combine(PathOperation.union, path, path2);
           break;
 
         default:
