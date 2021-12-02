@@ -18,6 +18,12 @@ enum BubbleNip {
   rightTop,
   rightCenter,
   rightBottom,
+  topRight,
+  topLeft,
+  topCenter,
+  bottomRight,
+  bottomLeft,
+  bottomCenter,
 }
 
 class Bubble extends StatelessWidget {
