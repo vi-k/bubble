@@ -7,7 +7,8 @@
   screenshot for pub.dev.
 * The example runs on current Flutter: its platform folders are regenerated and
   it uses `launchUrl` from url_launcher 6.3. Its app bar is teal again under
-  Material 3, as on the screenshots.
+  Material 3, as on the screenshots, and the chat no longer ends with a
+  leftover test bubble.
 * The archive no longer carries the README screenshots, which the README links
   from GitHub anyway.
 * Fixed: a `GlobalKey` on `Bubble` threw "Multiple widgets used the same

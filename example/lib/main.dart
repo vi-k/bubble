@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Bubble(
                 style: styleSomebody,
                 child: const Text(
-                  'Hi Jason. Sorry to bother you. I have a queston for you.',
+                  'Hi Jason. Sorry to bother you. I have a question for you.',
                 ),
               ),
               Bubble(
@@ -175,15 +175,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.lightGreen.withAlpha(64),
                 elevation: 2,
                 child: const SizedBox(width: 80, height: 40),
-              ),
-              Bubble(
-                margin: const BubbleEdges.only(top: 5),
-                elevation: 10,
-                shadowColor: Colors.red[900],
-                alignment: Alignment.topRight,
-                nip: BubbleNip.rightTop,
-                color: Colors.green,
-                child: const Text('dsfdfdfg'),
               ),
             ],
           ),
