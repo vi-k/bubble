@@ -1,11 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:bubble/bubble.dart';
 import 'package:bubble/issue_clipper.dart';
+import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   static const title = 'Bubble Demo';
 
   @override
@@ -22,14 +24,14 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -58,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Container(
+        body: ColoredBox(
           color: Colors.yellow.withAlpha(64),
           child: ListView(
             padding: const EdgeInsets.all(8),
@@ -77,7 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Bubble(
                 style: styleSomebody,
                 child: const Text(
-                    'Hi Jason. Sorry to bother you. I have a queston for you.'),
+                  'Hi Jason. Sorry to bother you. I have a queston for you.',
+                ),
               ),
               Bubble(
                 style: styleMe,
@@ -118,11 +121,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     // Platform.,
                     MaterialButton(
                       onPressed: () async {
-                        const url =
-                            'https://github.com/flutter/flutter/issues/37779';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                        } else {
+                        final url = Uri.parse(
+                          'https://github.com/flutter/flutter/issues/37779',
+                        );
+                        if (!await launchUrl(url)) {
                           throw Exception('Could not launch $url');
                         }
                       },
@@ -176,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 nip: BubbleNip.rightTop,
                 color: Colors.green,
                 child: const Text('dsfdfdfg'),
-              )
+              ),
             ],
           ),
         ),

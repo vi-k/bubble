@@ -4,6 +4,8 @@
   its parameters are unchanged.
 * `pubspec.yaml` names the repository, the issue tracker, topics and a
   screenshot for pub.dev.
+* The example runs on current Flutter: its platform folders are regenerated and
+  it uses `launchUrl` from url_launcher 6.3.
 
 ## 1.2.1 (2021-03-10)
 

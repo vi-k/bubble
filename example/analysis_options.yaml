@@ -1,0 +1,14 @@
+# The package's own strict config, one level up: an example is code the reader
+# copies, so it answers to the same rules as `lib/`. Its `analyzer: exclude:`
+# list comes down with the include, and the globs there already cover the
+# platform folders of this example.
+include: ../analysis_options.yaml
+
+linter:
+  rules:
+    # Off for an example: an example app exports no API to document, its
+    # one-line widget methods read better as blocks, and a fire-and-forget
+    # call is the demo itself rather than a forgotten `await`.
+    public_member_api_docs: false
+    prefer_expression_function_bodies: false
+    discarded_futures: false
