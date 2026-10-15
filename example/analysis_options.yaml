@@ -1,7 +1,19 @@
 # The package's own strict config, one level up: an example is code the reader
-# copies, so it answers to the same rules as `lib/`. Its `analyzer: exclude:`
-# list comes down with the include, and the globs there already cover the
-# platform folders of this example.
+# copies, so it answers to the same rules as `lib/`.
+#
+# The `analyzer: exclude:` list repeats the one that comes down with the
+# include. Newer Flutter (3.47) writes this block into an app's own file on
+# `flutter pub get` when it is missing there, so keeping it here keeps the tree
+# clean on both legs of CI.
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 include: ../analysis_options.yaml
 
 linter:
