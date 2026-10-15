@@ -6,7 +6,8 @@
 * `pubspec.yaml` names the repository, the issue tracker, topics and a
   screenshot for pub.dev.
 * The example runs on current Flutter: its platform folders are regenerated and
-  it uses `launchUrl` from url_launcher 6.3.
+  it uses `launchUrl` from url_launcher 6.3. Its app bar is teal again under
+  Material 3, as on the screenshots.
 * The archive no longer carries the README screenshots, which the README links
   from GitHub anyway.
 * Fixed: a `GlobalKey` on `Bubble` threw "Multiple widgets used the same

@@ -15,6 +15,12 @@ class MyApp extends StatelessWidget {
         title: title,
         theme: ThemeData(
           primarySwatch: Colors.teal,
+          // Material 3 paints the app bar with the surface colour, not the
+          // primary one; this keeps it teal, as on the README screenshots.
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.teal,
+            foregroundColor: Colors.white,
+          ),
         ),
         home: const MyHomePage(
           title: title,
