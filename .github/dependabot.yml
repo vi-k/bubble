@@ -1,0 +1,30 @@
+version: 2
+
+updates:
+  # The workflow pins actions to commit SHAs, so without this the pins never
+  # move. Dependabot moves the pin and the version comment together.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+
+  # Without these, nothing watches the Dart dependencies at all.
+  - package-ecosystem: pub
+    directory: /
+    schedule:
+      interval: monthly
+    ignore:
+      # flutter_lints 6 needs a newer SDK than the ^3.6.0 floor, so the floor
+      # leg of CI could not resolve it. Drop this entry the day the floor
+      # moves (which also means dropping require_trailing_commas, see
+      # analysis_options.yaml).
+      - dependency-name: flutter_lints
+        update-types: [version-update:semver-major]
+
+  - package-ecosystem: pub
+    directory: /example
+    schedule:
+      interval: monthly
+    ignore:
+      - dependency-name: flutter_lints
+        update-types: [version-update:semver-major]

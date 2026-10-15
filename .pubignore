@@ -1,0 +1,47 @@
+# Files kept out of the published archive.
+#
+# `.pubignore` REPLACES `.gitignore` for this directory when publishing, so
+# everything that must stay out of the package is listed here, not only the
+# paths that git also ignores.
+
+# The repository's own process, not the package: the regimen the agents read,
+# the state they keep, the mirror scripts, and CI.
+/docs/
+/AGENTS.md
+/CLAUDE.md
+/.github/
+/.vscode/
+
+# The Russian mirrors of the two public pages. They live beside the originals,
+# so that a reader finds one where the other is; pub.dev renders `README.md`
+# and `example/README.md` and has no use for either translation.
+/README.ru.md
+/example/README.ru.md
+
+# The README shows its screenshots by absolute GitHub links, so the archive
+# needs only the one `pubspec.yaml` names under `screenshots:` for pub.dev:
+# 70 KB instead of 644 KB.
+/screenshots/*
+!/screenshots/example.png
+
+# Platform folders of the example: `flutter create .` regenerates them, and a
+# reader of an example needs its Dart.
+/example/android/
+/example/ios/
+/example/macos/
+/example/web/
+/example/windows/
+
+# Flutter/Dart/Pub related
+# Libraries should not include pubspec.lock, per
+# https://dart.dev/guides/libraries/private-files#pubspeclock.
+/pubspec.lock
+**/doc/api/
+.dart_tool/
+build/
+.fvm/
+.fvmrc
+
+# Miscellaneous
+*.log
+.DS_Store

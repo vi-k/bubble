@@ -7,6 +7,8 @@
   screenshot for pub.dev.
 * The example runs on current Flutter: its platform folders are regenerated and
   it uses `launchUrl` from url_launcher 6.3.
+* The archive no longer carries the README screenshots, which the README links
+  from GitHub anyway.
 
 ## 1.2.1 (2021-03-10)
 

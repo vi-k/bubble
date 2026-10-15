@@ -1,0 +1,102 @@
+# The checks of `AGENTS.md` §5, run by a machine instead of by a person.
+#
+# Two legs: Flutter 3.27.0, which carries Dart 3.6.0 — the floor that
+# `pubspec.yaml` declares and the one `fvm` pins locally — and the current
+# stable, which nobody runs locally. Here the action pins the version
+# directly, so `flutter` and `dart` on the PATH are already the right ones and
+# no `fvm` prefix is needed.
+name: ci
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  # `pubspec.lock` is not committed for a library, so a bad upstream release
+  # would otherwise only surface on the next push.
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A newer push to a pull request makes its running check pointless. Not on
+# `master`: every commit there should end up with a finished run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: floor
+            version: "3.27.0"
+          # An empty version is the latest on the channel; naming it would
+          # pin a number that goes stale.
+          - name: stable
+            version: ""
+
+    name: flutter (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        with:
+          flutter-version: ${{ matrix.version }}
+          channel: stable
+          cache: true
+
+      - name: Toolchain
+        run: flutter --version
+
+      - name: Dependencies
+        run: flutter pub get
+
+      # First, while nothing has written to the tree yet: the dry run counts an
+      # uncommitted change as a warning, and one warning is a non-zero exit.
+      - name: Publish dry run
+        run: dart pub publish --dry-run
+
+      - name: Translations answer their originals
+        run: sh docs/ru/check.sh
+
+      # The package's language version is 3.6 on both legs, so both format in
+      # the same short style.
+      - name: Formatting
+        run: dart format --set-exit-if-changed lib test example/lib example/test
+
+      # Before the root analyze, not after it: `flutter analyze` walks the whole
+      # tree, `example/` included, and on a fresh clone that package is not
+      # resolved yet.
+      - name: Dependencies of the example
+        working-directory: example
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Dartdoc
+        run: dart doc --dry-run
+
+      - name: Tests
+        run: flutter test
+
+      - name: Example, analyzed and tested
+        working-directory: example
+        run: |
+          flutter analyze
+          flutter test
+
+      # The example's lockfile is committed and is the one the floor resolves.
+      # On the floor leg the `pub get` above rewrites it if it is not, and then
+      # this step says so. Stable resolves newer versions, so it is not asked.
+      - name: Nothing drifted
+        if: matrix.name == 'floor'
+        run: git diff --exit-code
