@@ -58,5 +58,13 @@ class BubblePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant BubblePainter oldDelegate) => false;
+  bool shouldRepaint(covariant BubblePainter oldDelegate) =>
+      _fillPaint.color != oldDelegate._fillPaint.color ||
+      _strokePaint?.color != oldDelegate._strokePaint?.color ||
+      _strokePaint?.strokeWidth != oldDelegate._strokePaint?.strokeWidth ||
+      borderUp != oldDelegate.borderUp ||
+      elevation != oldDelegate.elevation ||
+      shadowColor != oldDelegate.shadowColor ||
+      clipper.runtimeType != oldDelegate.clipper.runtimeType ||
+      clipper.shouldReclip(oldDelegate.clipper);
 }

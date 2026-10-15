@@ -329,6 +329,16 @@ class BubbleClipper extends CustomClipper<Path> {
     return path;
   }
 
+  /// Whether the outline differs from [oldClipper]'s. [padding] is left out:
+  /// it moves the child, not the outline.
   @override
-  bool shouldReclip(BubbleClipper oldClipper) => false;
+  bool shouldReclip(BubbleClipper oldClipper) =>
+      radius != oldClipper.radius ||
+      showNip != oldClipper.showNip ||
+      nip != oldClipper.nip ||
+      nipWidth != oldClipper.nipWidth ||
+      nipHeight != oldClipper.nipHeight ||
+      nipOffset != oldClipper.nipOffset ||
+      nipRadius != oldClipper.nipRadius ||
+      stick != oldClipper.stick;
 }

@@ -12,6 +12,10 @@
 * Fixed: a `GlobalKey` on `Bubble` threw "Multiple widgets used the same
   GlobalKey", because the bubble passed its key on to the `Container` it
   builds. The key now stays on the `Bubble`.
+* Fixed: a bubble already on screen was not repainted when its color, border,
+  shadow or shape changed but its size did not, because
+  `BubblePainter.shouldRepaint` and `BubbleClipper.shouldReclip` always
+  returned `false`. Both now compare what they draw.
 
 ## 1.2.1 (2021-03-10)
 

@@ -5,8 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 // The widget, its style and its painter. The shape itself is pinned in
 // `bubble_clipper_test.dart`; this file covers what [Bubble] does with the
 // parameters before the clipper sees them, where it puts the child, what it
-// does with its key, and in what order it paints. All of it is 1.2.1
-// behaviour except the key, which 1.2.1 also put on the inner `Container`.
+// does with its key, when it repaints, and in what order it paints. All of
+// it is 1.2.1 behaviour except two fixes: 1.2.1 also put the key on the
+// inner `Container`, and never repainted a bubble whose size stayed.
 
 Widget _host(Widget child) => Directionality(
       textDirection: TextDirection.ltr,
@@ -189,6 +190,104 @@ void main() {
 
       expect(find.byKey(key), findsOneWidget);
     });
+  });
+
+  group('Bubble repaints', () {
+    const child = SizedBox(width: 20, height: 10);
+    final before = Bubble(
+      nip: BubbleNip.leftTop,
+      borderColor: Colors.red,
+      child: child,
+    );
+
+    // Puts [after] where [before] was and stops the frame after layout, so
+    // the repaint the swap asked for is still there to read. The size must
+    // stay: a new size repaints on its own and would hide the painter's
+    // answer.
+    Future<bool> needsPaint(WidgetTester tester, Bubble after) async {
+      await tester.pumpWidget(_host(before));
+      final size = tester.getSize(find.byType(Bubble));
+      await tester.pumpWidget(_host(after), phase: EnginePhase.layout);
+
+      expect(tester.getSize(find.byType(Bubble)), size);
+      return tester.renderObject(_painter).debugNeedsPaint;
+    }
+
+    testWidgets('not when nothing changes', (tester) async {
+      final same = Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        child: child,
+      );
+
+      expect(await needsPaint(tester, same), isFalse);
+    });
+
+    final changes = {
+      'color': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        color: Colors.green,
+        child: child,
+      ),
+      'borderColor': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.blue,
+        child: child,
+      ),
+      'borderWidth': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        borderWidth: 2,
+        child: child,
+      ),
+      'borderUp': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        borderUp: false,
+        child: child,
+      ),
+      'elevation': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        elevation: 4,
+        child: child,
+      ),
+      'shadowColor': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        shadowColor: Colors.blue,
+        child: child,
+      ),
+      'radius': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        radius: const Radius.circular(3),
+        child: child,
+      ),
+      'showNip': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        showNip: false,
+        child: child,
+      ),
+      'nip': Bubble(
+        nip: BubbleNip.leftBottom,
+        borderColor: Colors.red,
+        child: child,
+      ),
+      'nipOffset': Bubble(
+        nip: BubbleNip.leftTop,
+        borderColor: Colors.red,
+        nipOffset: 4,
+        child: child,
+      ),
+    };
+    for (final MapEntry(key: name, value: after) in changes.entries) {
+      testWidgets('for a new $name', (tester) async {
+        expect(await needsPaint(tester, after), isTrue);
+      });
+    }
   });
 
   group('Bubble paints', () {

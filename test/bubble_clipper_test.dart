@@ -22,6 +22,7 @@ BubbleClipper _clipper({
   double nipRadius = 1,
   bool stick = false,
   Radius radius = const Radius.circular(6),
+  EdgeInsets padding = const EdgeInsets.fromLTRB(8, 6, 8, 6),
 }) =>
     BubbleClipper(
       radius: radius,
@@ -32,7 +33,7 @@ BubbleClipper _clipper({
       nipOffset: nipOffset,
       nipRadius: nipRadius,
       stick: stick,
-      padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
+      padding: padding,
     );
 
 String _picture(Path path) {
@@ -556,6 +557,43 @@ void main() {
 
       test('$name: shape', () {
         expect(_picture(clipper.getClip(_size)), picture);
+      });
+    }
+  });
+
+  group('BubbleClipper reclips', () {
+    final old = _clipper(nip: BubbleNip.leftTop);
+
+    test('not when nothing changes', () {
+      expect(_clipper(nip: BubbleNip.leftTop).shouldReclip(old), isFalse);
+    });
+
+    test('not for a new padding, which moves the child and not the outline',
+        () {
+      final clipper = _clipper(
+        nip: BubbleNip.leftTop,
+        padding: const EdgeInsets.all(2),
+      );
+
+      expect(clipper.shouldReclip(old), isFalse);
+    });
+
+    final changes = {
+      'radius': _clipper(
+        nip: BubbleNip.leftTop,
+        radius: const Radius.circular(3),
+      ),
+      'showNip': _clipper(nip: BubbleNip.leftTop, showNip: false),
+      'nip': _clipper(nip: BubbleNip.rightTop),
+      'nipWidth': _clipper(nip: BubbleNip.leftTop, nipWidth: 6),
+      'nipHeight': _clipper(nip: BubbleNip.leftTop, nipHeight: 6),
+      'nipOffset': _clipper(nip: BubbleNip.leftTop, nipOffset: 4),
+      'nipRadius': _clipper(nip: BubbleNip.leftTop, nipRadius: 2),
+      'stick': _clipper(nip: BubbleNip.leftTop, stick: true),
+    };
+    for (final MapEntry(key: name, value: clipper) in changes.entries) {
+      test('for a new $name', () {
+        expect(clipper.shouldReclip(old), isTrue);
       });
     }
   });
