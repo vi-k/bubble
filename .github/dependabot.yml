@@ -8,7 +8,7 @@ updates:
     schedule:
       interval: monthly
 
-  # Without these, nothing watches the Dart dependencies at all.
+  # Without this, nothing watches the package's Dart dependencies at all.
   - package-ecosystem: pub
     directory: /
     schedule:
@@ -21,10 +21,9 @@ updates:
       - dependency-name: flutter_lints
         update-types: [version-update:semver-major]
 
-  - package-ecosystem: pub
-    directory: /example
-    schedule:
-      interval: monthly
-    ignore:
-      - dependency-name: flutter_lints
-        update-types: [version-update:semver-major]
+  # No entry for /example, on purpose. Dependabot resolves on the newest
+  # Flutter that the example's environment allows and rewrites the whole
+  # lockfile there, while the committed lockfile is the one the floor
+  # resolves (see the last step of ci.yml). Every update it could open would
+  # fail the floor leg, so the example's dependencies move by hand, when the
+  # floor moves.
