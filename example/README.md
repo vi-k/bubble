@@ -34,9 +34,3 @@ Bubble(
   child: const Text('Can you help me?'),
 ),
 ```
-
-Below the chat, four `PhysicalShape`s with the outlines of `IssueClipper` show
-how Flutter cast the shadow of a path made of several contours
-([flutter/flutter#37779](https://github.com/flutter/flutter/issues/37779)).
-That behaviour is why, since 1.2.0, `BubbleClipper` joins the nip to the
-rectangle with `Path.combine` instead of adding it as a second contour.

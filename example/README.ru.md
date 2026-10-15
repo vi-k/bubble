@@ -1,6 +1,6 @@
 # bubble example
 
-> Перевод `example/README.md` (blob `4456d159073af6b6876a0358a36a01555b4c5533`).
+> Перевод `example/README.md` (blob `f4585292d9d6470b8be18a6e2bfb57daa9dae48c`).
 > Правится в том же коммите, что и оригинал; проверка: `sh docs/ru/check.sh`.
 
 Короткий чат из виджетов `Bubble`.
@@ -38,9 +38,3 @@ Bubble(
   child: const Text('Can you help me?'),
 ),
 ```
-
-Под чатом четыре `PhysicalShape` с контурами `IssueClipper` показывают, как
-Flutter отбрасывал тень пути из нескольких контуров
-([flutter/flutter#37779](https://github.com/flutter/flutter/issues/37779)).
-Из-за этого `BubbleClipper` с версии 1.2.0 присоединяет хвостик
-к прямоугольнику через `Path.combine`, а не добавляет его вторым контуром.

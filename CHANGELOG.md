@@ -5,10 +5,11 @@
 * Every public member is documented.
 * `pubspec.yaml` names the repository, the issue tracker, topics and a
   screenshot for pub.dev.
-* The example runs on current Flutter: its platform folders are regenerated and
-  it uses `launchUrl` from url_launcher 6.3. Its app bar is teal again under
-  Material 3, as on the screenshots, and the chat no longer ends with a
-  leftover test bubble.
+* The example runs on current Flutter: its platform folders are regenerated,
+  and its app bar is teal again under Material 3, as on the screenshots. The
+  chat no longer ends with a leftover test bubble or with the four shadow
+  outlines of `IssueClipper`, and the example no longer depends on
+  url_launcher.
 * The archive no longer carries the README screenshots, which the README links
   from GitHub anyway.
 * Fixed: a `GlobalKey` on `Bubble` threw "Multiple widgets used the same

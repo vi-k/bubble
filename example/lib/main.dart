@@ -1,7 +1,5 @@
 import 'package:bubble/bubble.dart';
-import 'package:bubble/issue_clipper.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(const MyApp());
 
@@ -112,69 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 showNip: false,
                 margin: const BubbleEdges.only(top: 4),
                 child: const Text("What's the problem?"),
-              ),
-              Bubble(
-                alignment: Alignment.center,
-                color: const Color.fromARGB(255, 212, 234, 244),
-                margin: const BubbleEdges.only(top: 32, bottom: 16),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'The failed shadow',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    // Platform.,
-                    MaterialButton(
-                      onPressed: () async {
-                        final url = Uri.parse(
-                          'https://github.com/flutter/flutter/issues/37779',
-                        );
-                        if (!await launchUrl(url)) {
-                          throw Exception('Could not launch $url');
-                        }
-                      },
-                      child: const Text(
-                        'https://github.com/flutter/flutter/issues/37779',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              PhysicalShape(
-                clipBehavior: Clip.antiAlias,
-                clipper: IssueClipper(0),
-                color: Colors.lightGreen,
-                elevation: 2,
-                child: const SizedBox(width: 80, height: 40),
-              ),
-              const Divider(),
-              PhysicalShape(
-                clipBehavior: Clip.antiAlias,
-                clipper: IssueClipper(1),
-                color: Colors.lightGreen,
-                elevation: 2,
-                child: const SizedBox(width: 80, height: 40),
-              ),
-              const Divider(),
-              PhysicalShape(
-                clipBehavior: Clip.antiAlias,
-                clipper: IssueClipper(2),
-                color: Colors.lightGreen.withAlpha(64),
-                elevation: 2,
-                child: const SizedBox(width: 80, height: 40),
-              ),
-              const Divider(),
-              PhysicalShape(
-                clipBehavior: Clip.antiAlias,
-                clipper: IssueClipper(3),
-                color: Colors.lightGreen.withAlpha(64),
-                elevation: 2,
-                child: const SizedBox(width: 80, height: 40),
               ),
             ],
           ),
