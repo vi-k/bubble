@@ -1,3 +1,10 @@
+## Unreleased
+
+* Requires Dart 3.6 and Flutter 3.27 or newer (was Dart 2.12). The widget and
+  its parameters are unchanged.
+* `pubspec.yaml` names the repository, the issue tracker, topics and a
+  screenshot for pub.dev.
+
 ## 1.2.1 (2021-03-10)
 
 * Added a border (`borderColor`, `borderWidth`, `borderUp`).
