@@ -179,9 +179,12 @@ fvm flutter test                     # все зелёные; число — в 
 
 **Публикация на pub.dev — это связка целиком, одним заходом и подряд:**
 
-1. коммит `Release X.Y.Z` (в нём же бамп версии в `pubspec.yaml` и заголовок
-   раздела `CHANGELOG.md` с датой вместо `Unreleased`);
-2. тег `X.Y.Z` (два последних тега — `1.2.0` и `1.2.1`, без `v`);
+1. коммит `Release X.Y.Z` (в нём же бамп версии в `pubspec.yaml`, заголовок
+   раздела `CHANGELOG.md` с датой вместо `Unreleased` и `example/pubspec.lock`
+   после `fvm flutter pub get` в `example/`: пример подключает пакет по пути,
+   и lock хранит его версию — без этого CI на floor падает на «Nothing
+   drifted»);
+2. тег `X.Y.Z` (два последних тега — `1.2.1` и `1.3.0`, без `v`);
 3. `git push` коммита и тега;
 4. `dart pub publish`.
 
