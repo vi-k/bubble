@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 
-/// Four outlines that show how [PhysicalShape] casts the shadow of a path
-/// made of several contours.
+/// Four outlines that the example used to draw next to the bubbles to show
+/// https://github.com/flutter/flutter/issues/37779.
 ///
-/// Not part of the bubble: the example draws them next to the bubbles to
-/// demonstrate https://github.com/flutter/flutter/issues/37779, which shaped
-/// how `BubbleClipper` joins the nip to the rectangle.
+/// Not part of the bubble. On Skia, a [PhysicalShape] with a translucent
+/// color casts a broken shadow under outlines 2 and 3; the defect is tracked
+/// as https://github.com/flutter/flutter/issues/194448.
+@Deprecated(
+  'Not part of the bubble, and the example no longer draws it. '
+  'Will be removed in the next major version.',
+)
 class IssueClipper extends CustomClipper<Path> {
   /// Creates the outline number [test], from 0 to 3.
+  @Deprecated(
+    'Not part of the bubble, and the example no longer draws it. '
+    'Will be removed in the next major version.',
+  )
   IssueClipper(this.test) : super();
 
   /// Which outline to draw: 0 — two contours drawn clockwise, 1 — the second

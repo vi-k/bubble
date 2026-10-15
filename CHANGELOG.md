@@ -2,6 +2,9 @@
 
 * Requires Dart 3.6 and Flutter 3.27 or newer (was Dart 2.12). The widget and
   its parameters are unchanged.
+* Deprecated `IssueClipper` (`package:bubble/issue_clipper.dart`). It was
+  never part of the bubble, the example no longer draws it, and it will be
+  removed in the next major version.
 * Every public member is documented.
 * `pubspec.yaml` names the repository, the issue tracker, topics and a
   screenshot for pub.dev.
