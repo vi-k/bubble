@@ -1,6 +1,6 @@
 # Bubble
 
-> Перевод `README.md` (blob `100836885b2f874df01e2ceb41cc628c2288cbc4`).
+> Перевод `README.md` (blob `e862e88943249fe7f29eeccd0ed50ac4ce0afec9`).
 > Правится в том же коммите, что и оригинал; проверка: `sh docs/ru/check.sh`.
 
 [![Pub](https://img.shields.io/pub/v/bubble)](https://pub.dev/packages/bubble)
@@ -11,10 +11,10 @@ Flutter-виджет для чата: пузырь сообщения, как в
 
 ## Пример
 
-Смотрите [исходники](https://github.com/vi-k/bubble/blob/master/example).
+Смотрите [исходники](https://github.com/vi-k/bubble/blob/main/example).
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/example.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/example.png?raw=true"
 width="360">
 
 ## Использование
@@ -26,7 +26,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_first.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_first.png?raw=true"
 width="360">
 
 ### • color
@@ -48,7 +48,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_color.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_color.png?raw=true"
 width="360">
 
 ### • nip
@@ -89,7 +89,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_nip.png?raw=true"
 width="360">
 
 ### • stick
@@ -141,7 +141,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_stick.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_stick.png?raw=true"
 width="360">
 
 ### • alignment
@@ -188,7 +188,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_alignment.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_alignment.png?raw=true"
 width="360">
 
 ### • nipWidth and nipHeight
@@ -243,7 +243,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_size.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_nip_size.png?raw=true"
 width="360">
 
 ### • radius
@@ -317,7 +317,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_radius.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_radius.png?raw=true"
 width="360">
 
 ### • nipRadius
@@ -347,12 +347,12 @@ for (var i = 0; i <= 5; i++)
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_radius.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_nip_radius.png?raw=true"
 width="360">
 
 Схема:
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/scheme.jpg?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/main/screenshots/scheme.jpg?raw=true)
 
 ### • nipOffset
 
@@ -381,7 +381,7 @@ for (var i = 0; i <= 15; i += 3)
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_offset.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_offset.png?raw=true"
 width="360">
 
 ### • margin
@@ -425,7 +425,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_margin.png?raw=true"
 width="360">
 
 ```dart
@@ -463,7 +463,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin_2.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_margin_2.png?raw=true"
 width="360">
 
 ### • elevation
@@ -494,7 +494,7 @@ for (var i = 1; i <= 8; i *= 2)
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_elevation.png?raw=true"
 width="360">
 
 Тонкая тень.
@@ -566,7 +566,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation_2.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_elevation_2.png?raw=true"
 width="360">
 
 ### • shadowColor
@@ -625,7 +625,7 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_shadow_color.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_shadow_color.png?raw=true"
 width="360">
 
 ### • padding
@@ -663,5 +663,5 @@ Bubble(
 ```
 
 <img
-src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_padding.png?raw=true"
+src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_padding.png?raw=true"
 width="360">

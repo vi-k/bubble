@@ -9,9 +9,9 @@ name: ci
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   # `pubspec.lock` is not committed for a library, so a bad upstream release
   # would otherwise only surface on the next push.
   schedule:
@@ -22,7 +22,7 @@ permissions:
   contents: read
 
 # A newer push to a pull request makes its running check pointless. Not on
-# `master`: every commit there should end up with a finished run.
+# `main`: every commit there should end up with a finished run.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}

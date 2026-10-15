@@ -6,9 +6,9 @@ A Flutter widget for chat like a speech bubble in Whatsapp and others.
 
 ## Example
 
-See [sources](https://github.com/vi-k/bubble/blob/master/example).
+See [sources](https://github.com/vi-k/bubble/blob/main/example).
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/example.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/example.png?raw=true" width="360">
 
 ## Usage
 
@@ -18,7 +18,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_first.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_first.png?raw=true" width="360">
 
 ### • color
 
@@ -38,7 +38,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_color.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_color.png?raw=true" width="360">
 
 ### • nip
 
@@ -77,7 +77,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_nip.png?raw=true" width="360">
 
 ### • stick
 
@@ -126,7 +126,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_stick.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_stick.png?raw=true" width="360">
 
 ### • alignment
 
@@ -171,7 +171,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_alignment.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_alignment.png?raw=true" width="360">
 
 ### • nipWidth and nipHeight
 
@@ -224,7 +224,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_size.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_nip_size.png?raw=true" width="360">
 
 ### • radius
 
@@ -296,7 +296,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_radius.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_radius.png?raw=true" width="360">
 
 ### • nipRadius
 
@@ -324,11 +324,11 @@ for (var i = 0; i <= 5; i++)
   ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_nip_radius.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_nip_radius.png?raw=true" width="360">
 
 Scheme:
 
-![Bubble](https://github.com/vi-k/bubble/blob/master/screenshots/scheme.jpg?raw=true)
+![Bubble](https://github.com/vi-k/bubble/blob/main/screenshots/scheme.jpg?raw=true)
 
 ### • nipOffset
 
@@ -356,7 +356,7 @@ for (var i = 0; i <= 15; i += 3)
   ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_offset.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_offset.png?raw=true" width="360">
 
 ### • margin
 
@@ -398,7 +398,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_margin.png?raw=true" width="360">
 
 ```dart
 Bubble(
@@ -434,7 +434,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_margin_2.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_margin_2.png?raw=true" width="360">
 
 ### • elevation
 
@@ -463,7 +463,7 @@ for (var i = 1; i <= 8; i *= 2)
   ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_elevation.png?raw=true" width="360">
 
 A thin shadow.
 
@@ -533,7 +533,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_elevation_2.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_elevation_2.png?raw=true" width="360">
 
 ### • shadowColor
 
@@ -590,7 +590,7 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_shadow_color.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_shadow_color.png?raw=true" width="360">
 
 ### • padding
 
@@ -626,4 +626,4 @@ Bubble(
 ),
 ```
 
-<img src="https://github.com/vi-k/bubble/blob/master/screenshots/screenshot_padding.png?raw=true" width="360">
+<img src="https://github.com/vi-k/bubble/blob/main/screenshots/screenshot_padding.png?raw=true" width="360">
