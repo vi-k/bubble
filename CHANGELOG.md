@@ -1,4 +1,4 @@
-## Unreleased
+## 1.3.0 (2026-10-15)
 
 * Requires Dart 3.6 and Flutter 3.27 or newer (was Dart 2.12). The widget and
   its parameters are unchanged.
