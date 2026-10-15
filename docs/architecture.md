@@ -9,7 +9,7 @@
 
 ```
 Bubble                                  StatelessWidget, конструктор не const
-└─ Container(key, alignment, margin)
+└─ Container(alignment, margin)
    └─ CustomPaint(painter: BubblePainter(clipper: bubbleClipper, …))
       └─ Container(padding: bubbleClipper.edgeInsets)
          └─ child
@@ -113,9 +113,9 @@ Bubble                                  StatelessWidget, конструктор 
 - **Перерисовку.** `shouldRepaint` и `shouldReclip` возвращают `false`
   безусловно. Это дефект (`docs/handoff.md`), но и наблюдаемое поведение:
   исправление меняет, когда пузырь перерисовывается.
-- **Ключ.** `build` передаёт `key` самого `Bubble` внутреннему `Container`;
-  с `GlobalKey` это падает. Тоже дефект из handoff; убрать `key: key` — видимое
-  изменение.
+- **Ключ.** `key` принадлежит самому `Bubble` и внутрь не передаётся: тот же
+  ключ на внутреннем `Container` стоял бы в дереве дважды, и `GlobalKey`
+  падал бы, как в 1.2.1. Держит `test/bubble_test.dart`, группа «Bubble takes».
 - **`const` у `BubbleStyle`.** Поле, которое не может быть `const`, или
   нефинальное поле сломают `static const` стили у пользователей.
 - **Семантику `null` в `BubbleEdges`** (см. «Как разрешается параметр»).

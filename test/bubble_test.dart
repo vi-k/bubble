@@ -2,10 +2,11 @@ import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-// The widget, its style and its painter, as they behaved in 1.2.1. The shape
-// itself is pinned in `bubble_clipper_test.dart`; this file covers what
-// [Bubble] does with the parameters before the clipper sees them, where it
-// puts the child, and in what order it paints.
+// The widget, its style and its painter. The shape itself is pinned in
+// `bubble_clipper_test.dart`; this file covers what [Bubble] does with the
+// parameters before the clipper sees them, where it puts the child, what it
+// does with its key, and in what order it paints. All of it is 1.2.1
+// behaviour except the key, which 1.2.1 also put on the inner `Container`.
 
 Widget _host(Widget child) => Directionality(
       textDirection: TextDirection.ltr,
@@ -169,6 +170,24 @@ void main() {
       final child = tester.getRect(find.byType(SizedBox).last);
       expect(child.right, box.right - 8);
       expect(child.top, box.top + 6);
+    });
+  });
+
+  group('Bubble takes', () {
+    testWidgets('a GlobalKey', (tester) async {
+      final key = GlobalKey();
+      await tester.pumpWidget(_host(Bubble(key: key, child: const Text('x'))));
+
+      expect(tester.takeException(), isNull);
+      expect(key.currentWidget, isA<Bubble>());
+    });
+
+    testWidgets('a key for itself, not for the widgets it builds',
+        (tester) async {
+      const key = ValueKey('bubble');
+      await tester.pumpWidget(_host(Bubble(key: key, child: const Text('x'))));
+
+      expect(find.byKey(key), findsOneWidget);
     });
   });
 

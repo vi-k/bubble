@@ -9,6 +9,9 @@
   it uses `launchUrl` from url_launcher 6.3.
 * The archive no longer carries the README screenshots, which the README links
   from GitHub anyway.
+* Fixed: a `GlobalKey` on `Bubble` threw "Multiple widgets used the same
+  GlobalKey", because the bubble passed its key on to the `Container` it
+  builds. The key now stays on the `Bubble`.
 
 ## 1.2.1 (2021-03-10)
 

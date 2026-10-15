@@ -156,7 +156,6 @@ class Bubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        key: key,
         alignment: alignment,
         margin: margin,
         child: CustomPaint(
