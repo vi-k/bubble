@@ -1,7 +1,10 @@
 part of 'bubble.dart';
 
-/// A painter for the Bubble.
+/// Paints a [Bubble]: its shadow, its fill and its border, in the outline
+/// that [clipper] describes.
 class BubblePainter extends CustomPainter {
+  /// Creates a painter for the outline of [clipper]; see [Bubble.new] for
+  /// what each parameter means.
   BubblePainter({
     required this.clipper,
     required Color color,
@@ -10,7 +13,7 @@ class BubblePainter extends CustomPainter {
     required this.borderUp,
     required this.elevation,
     required this.shadowColor,
-  })   : _fillPaint = Paint()
+  })  : _fillPaint = Paint()
           ..color = color
           ..style = PaintingStyle.fill,
         _strokePaint = borderWidth == 0 || borderColor == Colors.transparent
@@ -22,9 +25,16 @@ class BubblePainter extends CustomPainter {
               ..strokeJoin = StrokeJoin.round
               ..style = PaintingStyle.stroke);
 
+  /// The outline to paint.
   final CustomClipper<Path> clipper;
+
+  /// Whether the border is painted above the fill (`true`) or under it.
   final bool borderUp;
+
+  /// The elevation of the shadow; zero draws no shadow.
   final double elevation;
+
+  /// The colour of the shadow.
   final Color shadowColor;
 
   final Paint _fillPaint;
@@ -40,8 +50,8 @@ class BubblePainter extends CustomPainter {
 
     if (borderUp) canvas.drawPath(clip, _fillPaint);
 
-    if (_strokePaint != null) {
-      canvas.drawPath(clip, _strokePaint!);
+    if (_strokePaint case final strokePaint?) {
+      canvas.drawPath(clip, strokePaint);
     }
 
     if (!borderUp) canvas.drawPath(clip, _fillPaint);

@@ -2,6 +2,7 @@
 
 * Requires Dart 3.6 and Flutter 3.27 or newer (was Dart 2.12). The widget and
   its parameters are unchanged.
+* Every public member is documented.
 * `pubspec.yaml` names the repository, the issue tracker, topics and a
   screenshot for pub.dev.
 * The example runs on current Flutter: its platform folders are regenerated and
